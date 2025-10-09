@@ -17,8 +17,14 @@ header nav{
     text-transform: uppercase;
 }
 
-header h1{
+header a{
     font-size: 25px;
+    align-self: center;
+    margin: 0;
+    color: #fff;
+    font-family: 'roboto';
+    font-weight: 500;
+    text-decoration: none;
 }
 
 header img{
@@ -27,4 +33,39 @@ header img{
     aspect-ratio: auto;
     width: 200px;
     height: auto;
+}
+
+
+
+@media screen and (max-width: 600px){
+header{
+    display: flex;
+    flex-direction: column;
+    min-height: 70px;
+    height: fit-content;
+    justify-content: center;
+    align-items: center;
+    background-color: #140D1C;
+    color: #fff;
+    border-bottom: 2px solid #460EC8;
+}
+
+header nav{
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    gap: 15px;
+    margin: 15px 0;
+    text-transform: uppercase;
+}
+
+header img{
+    margin-left: 0;
+    margin-bottom: 15px;
+    filter: invert();
+    aspect-ratio: auto;
+    width: 200px;
+    height: auto;
+}
+
 }

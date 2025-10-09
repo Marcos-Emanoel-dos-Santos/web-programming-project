@@ -2,3 +2,5 @@ footer{
     min-height: 70px;
     background-color: black;
 }
+
+@media screen and (max-width: 600px){}
