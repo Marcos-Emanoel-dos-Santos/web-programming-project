@@ -3,4 +3,37 @@ main{
     background-color: #151122;
 }
 
+.container_gerador_link{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.container_gerador_link h2{
+    margin: 0;
+    color: #3D414A;
+    font-weight: 400;
+    margin-top: 10px;
+}
+
+.container_inserir_url{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 270px;
+    height: 80px;
+    background-color: #CECCEA;
+    border-radius: 12.5px;
+}
+
+.container_inserir_url input{
+    background-color: #DAD7E9;
+    width: calc(100% - 4px);
+    height: 25px;
+    border-end-start-radius: 12.5px;
+    border-end-end-radius: 12.5px;
+    border: none;
+}
+
 @media screen and (max-width: 600px){}
