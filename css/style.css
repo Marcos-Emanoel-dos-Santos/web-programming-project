@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Matangi:wght@300..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
+:root{
+    --link_background_color: #DAD7E9;
+    --link_border_radius: 10.5px;
+    --link_URL_width: 300px;
+}
+
 html, body{
     padding: 0;
     margin: 0;

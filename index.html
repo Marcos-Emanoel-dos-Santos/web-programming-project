@@ -12,6 +12,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Matangi:wght@300..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <header>
         <nav class="">
@@ -20,7 +21,7 @@
         </nav>
         
         <div>
-            <img src="img/WEBKNOT_sem_fundo.png" alt="Logo da Webknot">
+            <img src="img/WEBKNOT.png" alt="Logo da Webknot">
         </div>
     </header>
 
@@ -29,10 +30,12 @@
         <div class="container_gerador_link">
             <div class="container_inserir_url">
                 <h2>Insert the URL</h2>
-                <input type="text" placeholder="https://externallink.com">
+                <input type="text" placeholder="https://externallink.com" id="input-link_encurtado">
             </div>
-            <button>Generate link</button>
-            <div class="output-link_encurtado"></div>
+            <button id="botao_gerador_link" onclick="gerarLink()">Generate link</button>
+            <div id="output-link_encurtado">
+                <p id="output-link_encurtado-p"></p>
+            </div>
         </div>
     </main>
 
@@ -40,5 +43,7 @@
     <footer>
 
     </footer>
+
+    <script src="main.js"></script>
 </body>
 </html>
