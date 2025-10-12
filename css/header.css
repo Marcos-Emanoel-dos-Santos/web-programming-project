@@ -17,7 +17,13 @@ header nav{
     text-transform: uppercase;
 }
 
-header a{
+.nav_bar_elemento{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.nav_bar_elemento a{
     font-size: 25px;
     align-self: center;
     margin: 0;
@@ -25,6 +31,22 @@ header a{
     font-family: 'roboto';
     font-weight: 500;
     text-decoration: none;
+    transition: color 0.4s ease-out;
+}
+
+.nav_bar_elemento span{
+    width: 0;
+    height: 2px;
+    background-color: #b1a8c7;
+    transition: width 0.4s ease-out;
+}
+
+.nav_bar_elemento:hover a{
+    color: #b1a8c7;
+}
+
+.nav_bar_elemento:hover span{
+    width: 100%;
 }
 
 header img{
