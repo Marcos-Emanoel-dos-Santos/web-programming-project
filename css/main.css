@@ -54,6 +54,10 @@ main{
 }
 
 #output-link_encurtado{
+    display: flex;
+    align-items: center;
+    justify-content: space-around; 
+    flex-wrap: wrap;
     width: 0;
     height: 25px;
     background-color: var(--link_background_color);
@@ -65,14 +69,27 @@ main{
 }
 #output-link_encurtado.show{
     opacity: 1;
-    width: calc(var(--link_URL_width) - 30px);
-    padding: 1px 15px;
+    width: calc(var(--link_URL_width) - 20px);
+    padding: 1px 5px 1px 15px;
 }
 
 #output-link_encurtado-p{
+    display: inline-block;
     margin: 0;
     line-height: 25px;
     color: #3D414A;
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#output-link_encurtado img{
+    display: none;
+    width: 20px;
+    height: auto;
+    margin-top: 3.5px;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 600px){}
