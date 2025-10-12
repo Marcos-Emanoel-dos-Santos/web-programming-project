@@ -1,0 +1,5 @@
+main{
+    display: flex;
+    min-height: calc(100vh - 142px);
+    background-color: #151122;
+}
