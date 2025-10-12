@@ -4,9 +4,9 @@ header{
     min-height: 70px;
     justify-content: space-between;
     align-items: center;
-    background-color: #140D1C;
-    color: #fff;
-    border-bottom: 2px solid #460EC8;
+    background-color: var(--header_bg);
+    color: var(--general_text_color);
+    border-bottom: 2px solid var(--highlight_purple);
 }
 
 header nav{
@@ -27,7 +27,7 @@ header nav{
     font-size: 25px;
     align-self: center;
     margin: 0;
-    color: #fff;
+    color: var(--general_text_color);
     font-family: 'roboto';
     font-weight: 500;
     text-decoration: none;
@@ -37,12 +37,12 @@ header nav{
 .nav_bar_elemento span{
     width: 0;
     height: 2px;
-    background-color: #b1a8c7;
+    background-color: var(--highlight_text_color);
     transition: width 0.4s ease-out;
 }
 
 .nav_bar_elemento:hover a{
-    color: #b1a8c7;
+    color: var(--highlight_text_color);
 }
 
 .nav_bar_elemento:hover span{
@@ -68,8 +68,8 @@ header{
     justify-content: center;
     align-items: center;
     background-color: #140D1C;
-    color: #fff;
-    border-bottom: 2px solid #460EC8;
+    color: var(--general_text_color);
+    border-bottom: 2px solid var(--highlight_purple);
 }
 
 header nav{

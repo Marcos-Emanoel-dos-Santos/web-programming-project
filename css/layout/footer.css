@@ -1,6 +1,6 @@
 footer{
     min-height: 70px;
-    background-color: black;
+    background-color: var(--footer_bg);
 }
 
 @media screen and (max-width: 600px){}

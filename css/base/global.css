@@ -8,3 +8,6 @@ html, body{
     overflow-x: hidden;
 }
 
+body {
+  font-family: "Matangi", "Roboto", sans-serif;
+}

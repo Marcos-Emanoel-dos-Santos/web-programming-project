@@ -38,12 +38,31 @@
 
 
     <main>
-        <div>
+        <div class="user_profile">
+            <img src="img/pfp_example.png" alt="User's profile picture" class="pfp_img">
 
+            <div class="user_info_summary">
+                <p id="profile_username_p">Lorem Ipsum Dolor</p>
+                <p id="profile_links_count_p">XX links created.</p>
+            </div>
         </div>
 
-        <div>
+        <div class="link_related_div">
+            <div class="link_search_div link_related_subdiv">
+                <input type="text" placeholder="Find a link...">
 
+                <details class="dropdown">
+                    <summary>Tag</summary>
+                    <div class="content">
+                        <p id="tag_1">tag 1</p>
+                        <p id="tag_2">tag 2</p>
+                        <p id="tag_3">tag 3</p>
+                    </div>
+                </details>
+
+                <a href="index.html" class="create_new_link">New</a>
+            </div>
+            <div class="link_summary_div"></div>
         </div>
     </main>
 

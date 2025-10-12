@@ -1,7 +1,7 @@
 main{
     display: flex;
     height: calc(100vh - 142px);
-    background-color: #151122;
+    background-color: var(--general_bg);
 }
 
 .container_gerador_link{
@@ -14,8 +14,8 @@ main{
 
 .container_gerador_link h2{
     margin: 0;
-    color: #3D414A;
-    font-weight: 400;
+    color: var(--create_container_text_color);
+    font-weight: 600;
     margin-top: 10px;
     font-size: 24px;
 }
@@ -29,16 +29,16 @@ main{
     height: 80px;
     margin-bottom: 20px;
     background-color: #CECCEA;
-    border-radius: var(--link_border_radius);
+    border-radius: var(--general_border_radius);
 }
 
 .container_inserir_url input{
-    background-color: var(--link_background_color);
+    background-color: var(--link_bg);
     width: calc(100% - 19px);
     height: 25px;
     padding-left: 15px;
-    border-end-start-radius: var(--link_border_radius);
-    border-end-end-radius: var(--link_border_radius);
+    border-end-start-radius: var(--general_border_radius);
+    border-end-end-radius: var(--general_border_radius);
     border: none;
 }
 
@@ -47,10 +47,18 @@ main{
     margin-bottom: 60px;
     padding: 7.5px;
     font-size: 20px;
-    background-color: #346DE9;
+    background-color: var(--highlight_blue);
     color: #fff;
     border: none;
     border-radius: 10px;
+    transition:
+    scale 0.35s ease-in,
+    background-color 0.35s ease-in;
+}
+
+#botao_gerador_link:hover{
+    background-color: #2154c4;
+    scale: 1.05;
 }
 
 #output-link_encurtado{
@@ -60,8 +68,8 @@ main{
     flex-wrap: wrap;
     width: 0;
     height: 25px;
-    background-color: var(--link_background_color);
-    border-radius: var(--link_border_radius);
+    background-color: var(--link_bg);
+    border-radius: var(--general_border_radius);
     transition: 
         width 0.6s ease-out,
         opacity 0.3s ease-in,
@@ -77,7 +85,7 @@ main{
     display: inline-block;
     margin: 0;
     line-height: 25px;
-    color: #3D414A;
+    color: var(--create_container_text_color);
     flex: 1;
     white-space: nowrap;
     overflow: hidden;
