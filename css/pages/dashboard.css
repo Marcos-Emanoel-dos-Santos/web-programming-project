@@ -70,7 +70,7 @@ main{
     flex: 1;
     padding-left: 15px;
     background-color: var(--link_bg);
-    
+    font-size: 18px;
 }
 
 .wrapper{
@@ -127,7 +127,7 @@ main{
     box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
-.tag_details[open] > .content {
+.tag_details[open] .content {
   animation: slideDown 0.9s ease;
 }
 @keyframes slideDown{
@@ -182,12 +182,40 @@ input[type="radio"] {
     padding: 30px 0;
 }
 
-.element_URL_subdiv .short_link_URL{
+.element_URL_subdiv p{
+    margin: 0;
+}
+
+
+.element_URL_fitcontent_subdiv{
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    background-color: var(--general_bg);
+}
+
+.element_URL_fitcontent_subdiv:hover{
+    cursor: pointer;
+}
+
+.element_URL_fitcontent_subdiv span{
+    width: 0;
+    height: 2px;
+    align-self: center;
+    background-color: var(--highlight_text_color);
+    transition: width 0.6s ease-in-out;
+}
+
+.element_URL_fitcontent_subdiv:hover span{
+    width: 90%;
+}
+
+.short_link_URL{
     color: var(--general_text_color);
     font-size: 24px;
 }
 
-.element_URL_subdiv .long_link_URL{
+.long_link_URL{
     color: var(--secondary_text_color);
     font-size: 16px;
 }
@@ -236,15 +264,15 @@ input[type="radio"] {
     scale: 1.05;
 }
 
-.button_CRUD:hover > span{
+.button_CRUD:hover span{
     width: 200px;
     height: 200px;
 }
 
-.button_delete_element:hover > span{
+.button_delete_element:hover span{
     background-color: #ec091c;
 }
 
-.button_edit_element:hover > span{
+.button_edit_element:hover span{
     background-color: #19ee60;
 }
