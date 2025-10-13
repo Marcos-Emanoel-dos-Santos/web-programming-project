@@ -16,15 +16,3 @@ function gerarLink(){
     setTimeout(() => {output_img.style = 'display: inline-block;'}, 550);
     
 }
-
-const botaoCopiar = document.getElementById('botao_copiar_link');
-botaoCopiar.addEventListener('click', copiaCtdBotao);
-
-function copiaCtdBotao(){
-    const output_p = document.getElementById('output-link_encurtado-p').textContent;
-    if (!output_p) {
-        return;
-    }
-    
-    navigator.clipboard.writeText(output_p)
-}

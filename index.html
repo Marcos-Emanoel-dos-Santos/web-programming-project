@@ -5,15 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Webknot</title>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Matangi:wght@300..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="css/base/variables.css">
     <link rel="stylesheet" href="css/base/global.css">
     <link rel="stylesheet" href="css/layout/header.css">
     <link rel="stylesheet" href="css/layout/footer.css">
     <link rel="stylesheet" href="css/pages/home.css">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Matangi:wght@300..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="img/Vector.png">
 </head>
 
@@ -46,7 +47,7 @@
             <button id="botao_gerador_link" onclick="gerarLink()">Generate link</button>
             <div id="output-link_encurtado">
                 <p id="output-link_encurtado-p"></p>
-                <img id="botao_copiar_link" src="img/copy.png" alt="símbolo de cópia" onclick="">
+                <img id="botao_copiar_link" src="img/copy.png" alt="símbolo de cópia">
             </div>
         </div>
     </main>
@@ -56,6 +57,7 @@
         
     </footer>
 
+    <script src="js/button-eventListener.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>

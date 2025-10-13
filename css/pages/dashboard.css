@@ -38,7 +38,7 @@ main{
 }
 
 #profile_links_count_p{
-    color: var(--secondary_text);
+    color: var(--secondary_text_color);
 }
 
 .link_related_div{
@@ -49,60 +49,80 @@ main{
 
 .link_related_subdiv{
     width: 85%;
+    border-bottom: 2px solid var(--highlight_purple);
 }
 
 .link_search_div{
     display: flex;
+    flex-direction: row;
     gap: 20px;
+    padding-bottom: 20px;
 }
 
 .link_search_div > *{
-    height: 32px;
+    height: 40px;
     border-radius: var(--general_border_radius);
     border: none;
 }
 
 .link_search_div input{
     width: 60%;
+    flex: 1;
     padding-left: 15px;
     background-color: var(--link_bg);
     
 }
 
-.dropdown, .create_new_link{
+.wrapper{
+    display: flex;
+    gap: 20px;
+    flex-shrink: 0;
+}
+
+.wrapper > *{
+    border-radius: var(--general_border_radius);
+    border: none;
+}
+
+.tag_details, .create_new_link{
     display: inline-flex;
     justify-content: center;
     align-items: center;
     font-weight: 600;
 }
 
-.dropdown{
+.tag_details{
+    position: relative;
+    width: 114px;
     background-color: var(--link_bg);
-    width: 66px;
-    padding-left: 6px;
+    flex-direction: column;
 }
 
-.dropdown summary{
+.tag_details summary{
     list-style: none;
     cursor: pointer;
 }
 
-.dropdown summary::-webkit-details-marker {
+.tag_details summary::-webkit-details-marker {
   display: none;
 }
 
-.dropdown .content{
+.tag_details .content{
+    position: absolute;
+    top: 100%;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
     background-color: var(--link_bg);
     border-radius: 8px;
-    margin-top: 8px;
-    padding: 8px 12px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
-.dropdown[open] > .content {
+.tag_details[open] > .content {
   animation: slideDown 0.9s ease;
 }
-
 @keyframes slideDown{
   from {
     opacity: 0;
@@ -114,12 +134,110 @@ main{
   }
 }
 
+input[type="radio"] {
+    opacity: 0;
+    position: absolute;
+    width: 1em;
+    height: 1em;
+}
+
+.tag_details .content label{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 5px 0;
+    padding: 5px 0;
+    cursor: pointer;
+}
+
+.content label input{
+    list-style-type: none;
+}
+
 .create_new_link{
-    display: inline-flex;
     justify-content: center;
     align-items: center;
     background-color: var(--highlight_blue);
-    width: 72px;
+    width: 120px;
     color: var(--general_text_color);
     text-decoration: none;
+}
+
+.link_summary_div{
+    display: flex;
+}
+
+.element_URL_subdiv{
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 5px;
+    padding: 30px 0;
+}
+
+.element_URL_subdiv .short_link_URL{
+    color: var(--general_text_color);
+    font-size: 24px;
+}
+
+.element_URL_subdiv .long_link_URL{
+    color: var(--secondary_text_color);
+    font-size: 16px;
+}
+
+.element_CRUD_subdiv{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    gap: 10px;
+}
+
+.button_CRUD{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    height: 40px;
+    overflow: hidden;
+    font-size: 16px;
+    font-weight: 500;
+    background-color: var(--link_bg);
+    border-radius: var(--general_border_radius);
+    border: none;
+    transition:
+        background-color 0.4s ease-in,
+        scale 0.4s ease-in;
+}
+
+.button_CRUD span{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    z-index: -1;
+    border-radius: 50%;
+    transition:
+        width 0.4s ease-in,
+        height 0.4s ease-in,
+        background-color 0.2s ease-in;
+}
+
+.button_CRUD:hover{
+    cursor: pointer;
+    scale: 1.05;
+}
+
+.button_CRUD:hover > span{
+    width: 200px;
+    height: 200px;
+}
+
+.button_delete_element:hover > span{
+    background-color: #ec091c;
+}
+
+.button_edit_element:hover > span{
+    background-color: #19ee60;
 }
