@@ -89,6 +89,7 @@ main{
     justify-content: center;
     align-items: center;
     font-weight: 600;
+    font-size: 20px;
 }
 
 .tag_details{
@@ -105,6 +106,12 @@ main{
 
 .tag_details summary::-webkit-details-marker {
   display: none;
+}
+
+.tag_details summary img{
+    width: 20px;
+    height: auto;
+    margin-left: 12px;
 }
 
 .tag_details .content{
