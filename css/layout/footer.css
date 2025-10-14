@@ -1,6 +1,10 @@
 footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     min-height: 70px;
     background-color: var(--footer_bg);
+    color: white;
 }
 
 @media screen and (max-width: 600px){}
