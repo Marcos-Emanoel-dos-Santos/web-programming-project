@@ -41,10 +41,12 @@ main {
     gap: 10px;
     width: 100%;
     height: 100%;
+    justify-content: center;
+    margin-left: -60px;
 }
 
 .logo_div img {
-    width: 50%;
+    width: 250px;
     height: fit-content;
     align-self: end;
 }
@@ -154,7 +156,7 @@ button:hover {
 .login-text {
   margin-top: 25px;
   font-size: 14px;
-  color: var(--create_container_text_color);
+  color: var(--dark_text_color);
   text-align: center;
 }
 

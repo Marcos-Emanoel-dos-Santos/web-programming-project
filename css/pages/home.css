@@ -14,7 +14,7 @@ main{
 
 .container_gerador_link h2{
     margin: 0;
-    color: var(--create_container_text_color);
+    color: var(--dark_text_color);
     font-weight: 600;
     margin-top: 10px;
     font-size: 24px;
@@ -85,7 +85,7 @@ main{
     display: inline-block;
     margin: 0;
     line-height: 25px;
-    color: var(--create_container_text_color);
+    color: var(--dark_text_color);
     flex: 1;
     white-space: nowrap;
     overflow: hidden;

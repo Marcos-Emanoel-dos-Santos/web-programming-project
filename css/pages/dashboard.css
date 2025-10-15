@@ -41,6 +41,79 @@ main{
     color: var(--secondary_text_color);
 }
 
+.account_CRUD{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.button_CRUD{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    height: 40px;
+    overflow: hidden;
+    font-size: 16px;
+    font-weight: 500;
+    background-color: var(--link_bg);
+    border-radius: var(--general_border_radius);
+    border: none;
+    transition:
+        background-color 0.4s ease-in,
+        scale 0.4s ease-in;
+}
+
+.button_CRUD span{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    background-color: var(--link_bg);
+    z-index: -1;
+    border-radius: 50%;
+    transition:
+        width 0.4s ease-in,
+        height 0.4s ease-in,
+        background-color 0.3s ease-in;
+}
+
+.account_CRUD > button{
+    width: 95%;
+    max-width: 130px;
+    height: 35px;
+    padding: 5px 10px;
+    border: none;
+}
+
+.button_CRUD:hover{
+    cursor: pointer;
+    scale: 1.05;
+}
+
+.button_CRUD:hover span{
+    width: 200px;
+    height: 200px;
+}
+
+.account_edit_CRUD:hover span{
+    background-color: var(--edit_button_anim_bg);
+}
+
+.account_delete_CRUD:hover span{
+    background-color: var(--delete_button_anim_bg);
+}
+
+.account_CRUD button:hover span{
+    width: 130px;
+    height: 130px;
+}
+
 .link_related_div{
     width: 100%;
     height: 100%;
@@ -240,7 +313,7 @@ input[type="radio"] {
 .element_tags_subdiv span{
     background-color: var(--link_bg);
     padding: 5px 8px;
-    color: var(--create_container_text_color);
+    color: var(--dark_text_color);
     font-weight: 500;
     border-radius: var(--general_border_radius);
     transition: background-color 0.25s ease-in;
@@ -257,52 +330,10 @@ input[type="radio"] {
     gap: 10px;
 }
 
-.button_CRUD{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 120px;
-    height: 40px;
-    overflow: hidden;
-    font-size: 16px;
-    font-weight: 500;
-    background-color: var(--link_bg);
-    border-radius: var(--general_border_radius);
-    border: none;
-    transition:
-        background-color 0.4s ease-in,
-        scale 0.4s ease-in;
-}
-
-.button_CRUD span{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 0;
-    height: 0;
-    z-index: -1;
-    border-radius: 50%;
-    transition:
-        width 0.4s ease-in,
-        height 0.4s ease-in,
-        background-color 0.2s ease-in;
-}
-
-.button_CRUD:hover{
-    cursor: pointer;
-    scale: 1.05;
-}
-
-.button_CRUD:hover span{
-    width: 200px;
-    height: 200px;
-}
-
 .button_delete_element:hover span{
-    background-color: #ec091c;
+    background-color: var(--delete_button_anim_bg);
 }
 
 .button_edit_element:hover span{
-    background-color: #19ee60;
+    background-color: var(--edit_button_anim_bg);
 }
