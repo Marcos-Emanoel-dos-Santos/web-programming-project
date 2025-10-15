@@ -156,6 +156,10 @@ if(nomeDoArquivo == 'signin'){
 		const password = document.getElementById('password').value.trim();
 
 		// VALIDAÇÃO DA SENHA NO LOGIN (PRECISA DE BANCO DE DADOS)
+		if (password.length === 0) {
+        	document.getElementById('passwordError').textContent = 'Por favor, insira sua senha.';
+        return false;
+    	}
 
 		return true;
 	}
