@@ -150,7 +150,7 @@ button {
 }
 
 button:hover {
-  background-color: #517cfb;
+  background-color: var(--hover_highlight_blue);
 }
 
 .login-text {
