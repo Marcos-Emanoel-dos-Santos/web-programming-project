@@ -60,9 +60,13 @@
 
       <h2>Login</h2>
 
-      <form>
-        <input type="email" placeholder="Enter Email" required />
-        <input type="password" placeholder="Enter Password" required />
+      <form id="signinForm">
+        <input type="email" id="email" placeholder="Enter Email" required />
+        <span class="error" id="emailError"></span>
+
+        <input type="password" id="psswd" placeholder="Enter Password" required />
+        <span class="error" id="passwordError"></span>
+        
         <button type="submit">Login</button>
       </form>
 
