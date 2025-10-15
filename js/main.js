@@ -78,8 +78,9 @@ if (nomeDoArquivo == 'signup') {
 		const fullName = document.getElementById('fullName').value.trim();
 		if (fullName.length < 2) {
 			document.getElementById('nameError').textContent = 'Full name must be at least 2 characters long.';
-			isValid = false;
+			return false;
 		}
+		return true;
 	}
 
 	function validateEmail(){
@@ -89,26 +90,32 @@ if (nomeDoArquivo == 'signup') {
 		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 		if (!emailRegex.test(email)) {
 			document.getElementById('emailError').textContent = 'Please enter a valid email address.';
-			isValid = false;
+			return false;
 		}
+		return true;
 	}
 
 	function validatePsswd(){
 		const password = document.getElementById('password').value.trim();
+		const passwordRepeat = document.getElementById('password_repeat').value.trim();
+
 		if (password.length < 12) {
 			document.getElementById('passwordError').textContent = 'Password must be at least 12 characters long.';
-			isValid = false;
-		}
+			return false;
+		} 
+		if(password != passwordRepeat){
+				document.getElementById('passwordError2').textContent = 'Password must match.';
+				return false;
+			}
+		return true;
 	}
 
 	function validateForm() {
-		let isValid = true;
-
 		document.querySelectorAll('.error').forEach(e => e.textContent = '');
-		validateFullName();
-		validateEmail();
-		validatePsswd();
+		const isValidName = validateFullName();
+		const isValidEmail = validateEmail();
+		const isValidPsswd = validatePsswd();
 
-		return isValid;
+		return isValidName && isValidEmail && isValidPsswd;
 	}
 }
