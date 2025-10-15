@@ -6,6 +6,16 @@ main {
   height: calc(100vh - 72px);
 }
 
+.error {
+  color: red;
+  font-size: 0.9em;
+  display: block;
+}
+
+.error:empty {
+  display: none;
+}
+
 .container {
   display: flex;
   width: 100%;
