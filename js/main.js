@@ -74,17 +74,15 @@ if (nomeDoArquivo == 'signup') {
 		});
 	});
 
-	function validateForm() {
-		let isValid = true;
-
-		document.querySelectorAll('.error').forEach(e => e.textContent = '');
-
+	function validateFullName(){
 		const fullName = document.getElementById('fullName').value.trim();
 		if (fullName.length < 2) {
 			document.getElementById('nameError').textContent = 'Full name must be at least 2 characters long.';
 			isValid = false;
 		}
+	}
 
+	function validateEmail(){
 		const email = document.getElementById('email').value.trim();
 
 		// regex for email validation (eu totalmente fiz isso de cabeça)
@@ -93,12 +91,23 @@ if (nomeDoArquivo == 'signup') {
 			document.getElementById('emailError').textContent = 'Please enter a valid email address.';
 			isValid = false;
 		}
+	}
 
+	function validatePsswd(){
 		const password = document.getElementById('password').value.trim();
 		if (password.length < 12) {
 			document.getElementById('passwordError').textContent = 'Password must be at least 12 characters long.';
 			isValid = false;
 		}
+	}
+
+	function validateForm() {
+		let isValid = true;
+
+		document.querySelectorAll('.error').forEach(e => e.textContent = '');
+		validateFullName();
+		validateEmail();
+		validatePsswd();
 
 		return isValid;
 	}
