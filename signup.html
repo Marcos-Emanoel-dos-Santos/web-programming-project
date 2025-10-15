@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="css/pages/sign_upAndIn.css">
 
     <link rel="icon" type="image/x-icon" href="img/Vector.png">
+    <script src="js/main.js"></script>
 </head>
 <body>
   <header>
@@ -31,7 +32,7 @@
     </nav>
         
     <div>
-      <img src="img/WEBKNOT.png" alt="Logo da Webknot">
+      <a href="index.html"><img src="img/WEBKNOT.png" alt="Logo da Webknot"></a>
     </div>
   </header>
 
@@ -59,10 +60,16 @@
       <div class="right-panel">
         <h2>Sign Up</h2>
 
-        <form>
-          <input type="text" placeholder="Full Name" required />
-          <input type="email" placeholder="Enter Email" required />
-          <input type="password" placeholder="Create Password" required />
+        <form id="signupForm">
+	  <input type="text" id="fullName" placeholder="Full Name" required />
+	  <span class="error" id="nameError"></span>
+
+	  <input type="email" id="email" placeholder="Enter Email" required />
+	  <span class="error" id="emailError"></span>
+
+	  <input type="password" id="password" placeholder="Create Password" required />
+	  <span class="error" id="passwordError"></span>
+
           <button type="submit">Sign Up</button>
         </form>
 
