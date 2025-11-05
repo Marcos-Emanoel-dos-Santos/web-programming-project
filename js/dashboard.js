@@ -18,3 +18,16 @@ elementosURLSubdiv.forEach(elemento => {
 
 	});
 });
+
+async function mostrarQtdLinks(){
+	var promise = await fetch("database/listarLinksUsuario.php",
+		{method: "GET"}
+	);
+
+	var resultado = await promise.json();
+
+	
+	const qtdLinks = document.getElementById('profile_links_count_p');
+	qtdLinks.innerHTML = resultado.totalLinks + " links created.";
+}
+mostrarQtdLinks();

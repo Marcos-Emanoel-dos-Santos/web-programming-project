@@ -11,7 +11,7 @@
     $psswd = $_POST["password"];
 
 
-    $sql = "INSERT INTO Usuario(nome, email, senha) VALUES (?,?,?)";
+    $sql = "INSERT INTO Usuario(nome, email, senha_hash) VALUES (?,?,?)";
     $statement = mysqli_prepare(mysql: $conexao, query: $sql);
     mysqli_stmt_bind_param($statement, "sss", $fullName, $email, $psswd);
 
