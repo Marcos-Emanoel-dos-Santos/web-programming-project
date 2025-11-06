@@ -121,3 +121,14 @@ main{
 }
 
 }
+
+
+
+@media screen and (max-width: 500px){
+main{
+    display: flex;
+    height: calc(100vh - 240px);
+    background-color: var(--general_bg);
+}
+
+}
