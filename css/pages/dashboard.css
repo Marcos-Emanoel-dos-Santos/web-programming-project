@@ -282,7 +282,6 @@ input[type="radio"] {
 .element_URL_fitcontent_subdiv span{
     width: 0;
     height: 2px;
-    align-self: center;
     background-color: var(--highlight_text_color);
     transition: width 0.6s ease-in-out;
 }
@@ -310,7 +309,7 @@ input[type="radio"] {
 .element_tags_subdiv{
     display: flex;
     flex-direction: row;
-    max-width: 200px;
+    max-width: 300px;
     overflow-x: auto;
     gap: 10px;
     padding-bottom: 3px;
@@ -320,14 +319,12 @@ input[type="radio"] {
     height: 5px;
     margin-top: 5px;
 }
-
 .element_tags_subdiv::-webkit-scrollbar-thumb {
     background: var(--hover_highlight_blue);
     border-radius: 3px;
     padding-top: 2px;
     width: 15px;
 }
-
 .element_tags_subdiv::-webkit-scrollbar-track {
     background-color: var(--track-bg);
 }
@@ -339,6 +336,7 @@ input[type="radio"] {
     font-weight: 500;
     border-radius: var(--general_border_radius);
     transition: background-color 0.25s ease-in;
+    white-space: nowrap;
 }
 
 .element_tags_subdiv span:hover{
@@ -460,12 +458,7 @@ main{
 }
 
 .element_tags_subdiv{
-    display: flex;
-    flex-direction: row;
     max-width: 200px;
-    align-self: center;
-    overflow-x: auto;
-    gap: 10px;
 }
 
 .element_CRUD_subdiv{

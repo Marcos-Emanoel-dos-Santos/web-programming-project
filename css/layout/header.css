@@ -75,19 +75,16 @@ header{
 header nav{
     display: flex;
     flex-direction: column;
+    width: 80%;
+    justify-content: space-around;
     padding: 0;
     gap: 15px;
     margin: 15px 0;
-    text-transform: uppercase;
 }
 
 header img{
     margin-left: 0;
     margin-bottom: 15px;
-    filter: invert();
-    aspect-ratio: auto;
-    width: 200px;
-    height: auto;
 }
 
 }
