@@ -8,3 +8,7 @@ html, body{
 body *{
   font-family: "Roboto", sans-serif;
 }
+
+body{
+  width: 100%;
+}

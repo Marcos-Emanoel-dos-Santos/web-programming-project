@@ -1,7 +1,7 @@
 <?php
     $conexao = mysqli_connect("localhost:3306", "root", "Uc1661", "celulas");
 
-    $id_us = 1;
+    $id_us = 7;
 
     if(!$conexao){
         die("Connection failed");
@@ -22,11 +22,9 @@
         exit;
     }
 
-    $totalLinks = mysqli_fetch_all(result: $resultTotalLinks, mode: MYSQLI_ASSOC);
+    $totalLinks = mysqli_fetch_assoc($resultTotalLinks);
 
-    $retorno['totalLinks'] = $totalLinks;
-
-    echo json_encode($retorno);
+    echo json_encode($totalLinks['total']);
 
     mysqli_close($conexao);
 ?>

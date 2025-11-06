@@ -28,6 +28,13 @@ async function mostrarQtdLinks(){
 
 	
 	const qtdLinks = document.getElementById('profile_links_count_p');
-	qtdLinks.innerHTML = resultado.totalLinks + " links created.";
+	if(qtdLinks == 0){
+		qtdLinks.innerHTML = "No links created.";
+	}
+	else if(qtdLinks == 1){
+		qtdLinks.innerHTML = "1 link created.";
+	} else {
+		qtdLinks.innerHTML = resultado + " links created.";
+	}
 }
 mostrarQtdLinks();
