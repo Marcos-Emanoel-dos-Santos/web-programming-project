@@ -100,4 +100,24 @@ main{
     cursor: pointer;
 }
 
-@media screen and (max-width: 740px){}
+
+
+@media screen and (max-width: 740px){
+main{
+    display: flex;
+    height: calc(100vh - 140px);
+    background-color: var(--general_bg);
+}
+
+}
+
+
+
+@media screen and (max-width: 600px){
+main{
+    display: flex;
+    height: calc(100vh - 140px);
+    background-color: var(--general_bg);
+}
+
+}

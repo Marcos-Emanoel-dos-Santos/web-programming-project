@@ -359,6 +359,8 @@ input[type="radio"] {
     background-color: var(--edit_button_anim_bg);
 }
 
+
+
 @media screen and (max-width: 740px){
 main{
     display: flex;

@@ -57,6 +57,8 @@ header img{
     height: auto;
 }
 
+
+
 @media screen and (max-width: 740px){
 header{
     display: flex;
@@ -88,6 +90,8 @@ header img{
 
 }
 
+
+
 @media screen and (max-width: 500px){
 header{
     display: flex;
@@ -102,8 +106,12 @@ header nav{
     width: 80%;
     justify-content: space-around;
     padding: 0;
-    gap: 15px;
+    gap: 5px;
     margin: 15px 0;
+}
+
+.nav_bar_elemento{
+    margin: 0;
 }
 
 header img{
