@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 		if (isFormValid) {
 			console.log('Form valid, sending data.');
-			window.location.href = "index.html";
+			login();
 		} else {
 			console.log('Form invalid, please check the fields.');
 		}
@@ -31,10 +31,9 @@ function validateEmail(){
 function validatePsswd(){
 	const password = document.getElementById('password').value.trim();
 
-	// VALIDAÇÃO DA SENHA NO LOGIN (PRECISA DE BANCO DE DADOS)
 	if (password.length === 0) {
     	document.getElementById('passwordError').textContent = 'Por favor, insira sua senha.';
-    return false;
+    	return false;
 	}
 
 	return true;
@@ -47,3 +46,25 @@ function validateForm() {
 
 	return isValidEmail && isValidPsswd;
 }
+
+function login() {
+  const email = document.getElementById('email').value.trim();
+  const password = document.getElementById('password').value.trim();
+
+  fetch('database/api/login.php', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email, password })
+  })
+  .then(res => res.json())
+  .then(data => {
+    if (data.success) {
+      console.log('Usuário logado:', data.user);
+      window.location.href = 'dashboard.html';
+    } else {
+      alert(data.message);
+    }
+  })
+  .catch(err => console.error('Erro ao fazer login:', err));
+}
+

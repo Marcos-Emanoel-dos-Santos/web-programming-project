@@ -9,12 +9,12 @@ document.addEventListener('DOMContentLoaded', () => {
 		if (isFormValid) {
 			console.log('Form valid, sending data.');
 			salvarUsuario();
-			//window.location.href = "index.html";
 		} else {
 			console.log('Form invalid, please check the fields.');
 		}
 	});
 });
+
 
 function validateFullName(){
 	const fullName = document.getElementById('fullName').value.trim();
@@ -24,6 +24,7 @@ function validateFullName(){
 	}
 	return true;
 }
+
 
 function validateEmail(){
 	const email = document.getElementById('email').value.trim();
@@ -37,11 +38,12 @@ function validateEmail(){
 	return true;
 }
 
+
 function validatePsswd(){
 	const password = document.getElementById('password').value.trim();
 	const passwordRepeat = document.getElementById('password_repeat').value.trim();
 
-	if (password.length < 12) {
+	if (password.length < 8) {
 		document.getElementById('passwordError').textContent = 'Password must be at least 12 characters long.';
 		return false;
 	} 
@@ -52,6 +54,7 @@ function validatePsswd(){
 	return true;
 }
 
+
 function validateForm() {
 	document.querySelectorAll('.error').forEach(e => e.textContent = '');
 	const isValidName = validateFullName();
@@ -61,17 +64,33 @@ function validateForm() {
 	return isValidName && isValidEmail && isValidPsswd;
 }
 
+
 async function salvarUsuario(){
-	var form = document.getElementById('signupForm');
-	var dados = new FormData(form);
+	const fullName = document.getElementById('fullName').value.trim();
+	const email = document.getElementById('email').value.trim();
+	const password = document.getElementById('password').value.trim();
 
-	var promise = await fetch("database/index.php", {
+	const payload = {
+		fullName,
+		email,
+		password
+	};
+
+	const response = await fetch("database/api/signup.php", {
 		method: "POST",
-		body: dados
-	})
+		headers: {
+			"Content-Type": "application/json"
+		},
+		body: JSON.stringify(payload)
+	});
 
-	console.log(promise);
-
-	var resultado = await promise.json();
+	const resultado = await response.json();
 	console.log(resultado);
+
+	if (resultado.success) {
+		alert("Usuário cadastrado com sucesso!");
+		window.location.href = "index.html";
+	} else {
+		alert(resultado.message);
+	}
 }

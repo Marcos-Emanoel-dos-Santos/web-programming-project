@@ -1,12 +1,17 @@
 <?php
 require_once __DIR__ . '/../config/conexao.php';
 
+$con = new Conexao();
+$conn = $con->getConexao();
+
+
 class Usuario {
     private $conn;
     
     public $id_usuario;
     public $nome;
     public $email;
+    public $senha;
     public $senha_hash;
     public $data_criacao;
     public $data_ultima_atividade;
@@ -15,7 +20,7 @@ class Usuario {
         $this->conn = (new Conexao())->getConexao();
     }
 
-    // ✅ Cria novo usuário
+    // Cria novo usuário
     public function registrar() {
         $sql = "INSERT INTO Usuario (nome, email, senha_hash) VALUES (?, ?, ?)";
         $stmt = $this->conn->prepare($sql);
@@ -24,7 +29,7 @@ class Usuario {
             throw new Exception("Erro na preparação da query: " . $this->conn->error);
         }
 
-        $this->senha_hash = password_hash($this->senha_hash, PASSWORD_DEFAULT);
+        $this->senha_hash = password_hash($this->senha, PASSWORD_DEFAULT);
 
         $stmt->bind_param("sss", $this->nome, $this->email, $this->senha_hash);
 
@@ -36,7 +41,7 @@ class Usuario {
         }
     }
 
-    // ✅ Verifica se o email já existe
+    // Verifica se o email já existe
     public function emailExiste() {
         $sql = "SELECT id_usuario FROM Usuario WHERE email = ?";
         $stmt = $this->conn->prepare($sql);
@@ -47,7 +52,7 @@ class Usuario {
         return $result->num_rows > 0;
     }
 
-    // ✅ Faz login e retorna dados do usuário se sucesso
+    // Faz login e retorna dados do usuário se sucesso
     public function login($senhaDigitada) {
         $sql = "SELECT * FROM Usuario WHERE email = ?";
         $stmt = $this->conn->prepare($sql);
@@ -78,7 +83,7 @@ class Usuario {
         return false;
     }
 
-    // ✅ Atualiza o timestamp da última atividade
+    // Atualiza o timestamp da última atividade
     public function atualizarUltimaAtividade($id_usuario) {
         $sql = "UPDATE Usuario SET data_ultima_atividade = NOW() WHERE id_usuario = ?";
         $stmt = $this->conn->prepare($sql);
@@ -86,7 +91,7 @@ class Usuario {
         $stmt->execute();
     }
 
-    // ✅ Busca um usuário pelo ID
+    // Busca um usuário pelo ID
     public function buscarPorId($id_usuario) {
         $sql = "SELECT * FROM Usuario WHERE id_usuario = ?";
         $stmt = $this->conn->prepare($sql);
@@ -110,7 +115,7 @@ class Usuario {
         return $this;
     }
 
-    // ✅ Deleta um usuário e seus relacionamentos
+    // Deleta um usuário e seus relacionamentos
     public function deletar($id_usuario) {
         // Isso vai apagar em cascata tudo que está relacionado via ON DELETE CASCADE
         $sql = "DELETE FROM Usuario WHERE id_usuario = ?";
