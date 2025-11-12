@@ -83,24 +83,24 @@ async function atualizarNavBar() {
     const antigo = nav.querySelector(".nav_bar_elemento.sign");
     if (antigo) antigo.remove();
 
-    // Cria o novo elemento
+    // Cria o anchor de sign in/sign out com base na necessidade
     const div = document.createElement("div");
     div.classList.add("nav_bar_elemento", "sign");
-    const a = document.createElement("a");
-    a.href = "#";
-    a.textContent = data.loggedIn ? "Sign out" : "Sign in";
-    div.appendChild(a);
+    const signAnchor = document.createElement("a");
+    signAnchor.href = "signin.html";
+    signAnchor.textContent = data.loggedIn ? "Sign out" : "Sign in";
+    div.appendChild(signAnchor);
 
     const span = document.createElement("span");
     span.classList.add("nav_bar_animacao");
     div.appendChild(span);
 
     // Insere na barra
-    nav.insertBefore(div, nav.children[1]);
+    nav.insertBefore(div, nav.children[0]);
 
     // Define comportamento
     if (data.loggedIn) {
-      a.addEventListener("click", async (e) => {
+      signAnchor.addEventListener("click", async (e) => {
         e.preventDefault();
         await fetch("database/api/logout.php", {
           method: "POST",
@@ -109,14 +109,33 @@ async function atualizarNavBar() {
         window.location.href = "signin.html";
       });
     } else {
-      a.href = "signin.html";
+      signAnchor.href = "signin.html";
     }
+
+	// Cria o anchor de dashboard
+	if(data.loggedIn){
+		const divDashboard = document.createElement("div");
+		divDashboard.classList.add("nav_bar_elemento", "sign");
+		const dashboardAnchor = document.createElement("a");
+		dashboardAnchor.href = "dashboard.html";
+		dashboardAnchor.textContent = "dashboard";
+		divDashboard.appendChild(dashboardAnchor);
+
+		const span = document.createElement("span");
+		span.classList.add("nav_bar_animacao");
+		divDashboard.appendChild(span);
+
+		// Insere na barra
+    	nav.insertBefore(divDashboard, nav.children[0]);
+	}
+
   } catch (err) {
     console.error("Erro ao atualizar navbar:", err);
   }
 }
 
-atualizarNavBar();
+  
 
 
-document.addEventListener("DOMContentLoaded", atualizarNavBar)
+
+document.addEventListener("DOMContentLoaded", atualizarNavBar);
