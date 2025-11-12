@@ -1,81 +1,134 @@
-const botoesDelete = document.querySelectorAll('.button_delete_element');
+// ========== BOTÕES DELETAR ==========
+document.addEventListener("click", async (event) => {
+  if (event.target.classList.contains("button_delete_element")) {
+    const linkDiv = event.target.closest(".link_related_subdiv");
+    const id_link = linkDiv?.dataset.id;
 
-botoesDelete.forEach(botao => {
-	botao.addEventListener('click', () => {
-		const linkParaDeletar = botao.closest('.link_related_subdiv');
-
-		if (linkParaDeletar) {
-			linkParaDeletar.remove();
-		}
-	});
+    if (id_link) {
+      if (confirm("Tem certeza que deseja deletar este link?")) {
+        await deletarLink(id_link);
+        linkDiv.remove();
+        await mostrarQtdLinks(); // atualiza contador
+      }
+    }
+  }
 });
 
 
-const elementosURLSubdiv = document.querySelectorAll('.element_URL_fitcontent_subdiv');
-
-elementosURLSubdiv.forEach(elemento => {
-	elemento.addEventListener('click', () => {
-
-	});
+// ========== CLICAR NO LINK (futuro uso) ==========
+document.addEventListener("click", (event) => {
+  if (event.target.classList.contains("element_URL_fitcontent_subdiv")) {
+    const urlCurta = event.target.textContent.trim();
+    navigator.clipboard.writeText(urlCurta);
+    alert("Link copiado!");
+  }
 });
 
-async function mostrarQtdLinks(){
-	var promise = await fetch("database/api/tags.php",
-		{method: "GET"}
-	);
 
-	var resultado = await promise.json();
+// ========== LISTAR E CONTAR LINKS ==========
+async function mostrarQtdLinks() {
+  try {
+    const response = await fetch("http://localhost/web-programming-project/database/api/links.php", {
+      method: "GET",
+      credentials: "include",
+    });
 
-	
-	const qtdLinks = document.getElementById('profile_links_count_p');
-	if(qtdLinks == 0){
-		qtdLinks.innerHTML = "No links created.";
-	}
-	else if(qtdLinks == 1){
-		qtdLinks.innerHTML = "1 link created.";
-	} else {
-		qtdLinks.innerHTML = resultado + " links created.";
-	}
-}
-mostrarQtdLinks();
+    if (!response.ok) throw new Error("Erro ao buscar links: " + response.status);
 
+    const resultado = await response.json();
+    if (!resultado.success) throw new Error(resultado.message);
 
-// Código para verificar se usuário está logado
-document.addEventListener('DOMContentLoaded', () => {
-  const loggedInText = document.getElementById('authloggedInText');
+    const links = resultado.links || [];
+    const qtdLinks = document.getElementById("profile_links_count_p");
 
-  fetch('database/api/checkSession.php', {
-    method: 'GET',
-    credentials: 'include' // necessário se o backend usa cookies de sessão
-  })
-  .then(res => res.json())
-  .then(data => {
-    if (data.loggedIn) {
-      // Usuário está logado
-      loggedInText.textContent = 'LOG OUT';
-      loggedInText.addEventListener('click', logout);
+    if (!qtdLinks) return;
+
+    if (links.length === 0) {
+      qtdLinks.textContent = "No links created.";
+    } else if (links.length === 1) {
+      qtdLinks.textContent = "1 link created.";
     } else {
-      // Usuário não está logado
-      loggedInText.textContent = 'LOG IN';
-      loggedInText.addEventListener('click', () => {
-        window.location.href = 'login.html';
+      qtdLinks.textContent = `${links.length} links created.`;
+    }
+
+    // Exemplo: renderizar os links numa lista (se quiser)
+    const container = document.getElementById("links_container");
+    if (container) {
+      container.innerHTML = "";
+      links.forEach((link) => {
+        const div = document.createElement("div");
+        div.classList.add("link_related_subdiv");
+        div.dataset.id = link.id_link;
+        div.innerHTML = `
+          <div class="element_URL_fitcontent_subdiv">${link.url_curta}</div>
+          <button class="button_delete_element">Delete</button>
+        `;
+        container.appendChild(div);
       });
     }
-  })
-  .catch(err => console.error('Erro ao verificar sessão:', err));
-});
 
-function logout() {
-  fetch('database/api/logout.php', {
-    method: 'POST',
-    credentials: 'include'
-  })
-  .then(res => res.json())
-  .then(data => {
-    if (data.success) {
-      alert('Logout realizado com sucesso!');
-      window.location.reload();
-    }
-  })
-  .catch(err => console.error('Erro ao fazer logout:', err));
+  } catch (erro) {
+    console.error("Erro ao carregar links:", erro);
+  }
 }
+
+
+// ========== CRIAR LINK ==========
+async function criarLink() {
+  try {
+    const urlOriginal = document.getElementById("input_url")?.value?.trim();
+
+    if (!urlOriginal) {
+      alert("Digite uma URL válida!");
+      return;
+    }
+
+    const response = await fetch("http://localhost/web-programming-project/database/api/links.php", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+      body: JSON.stringify({ url_original: urlOriginal }),
+    });
+
+    const data = await response.json();
+    console.log(data);
+
+    if (data.success) {
+      alert("Link criado com sucesso: " + data.link.url_curta);
+      document.getElementById("input_url").value = "";
+      await mostrarQtdLinks();
+    } else {
+      alert("Erro ao criar link: " + data.message);
+    }
+  } catch (error) {
+    console.error("Erro ao criar link:", error);
+  }
+}
+
+
+// ========== DELETAR LINK ==========
+async function deletarLink(id_link) {
+  try {
+    const response = await fetch("http://localhost/web-programming-project/database/api/links.php", {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+      body: JSON.stringify({ id_link }),
+    });
+
+    const data = await response.json();
+    console.log(data);
+
+    if (data.success) {
+      console.log("Link deletado com sucesso.");
+    } else {
+      alert("Erro ao deletar link: " + data.message);
+    }
+  } catch (error) {
+    console.error("Erro ao deletar link:", error);
+  }
+}
+
+
+// ========== AO CARREGAR A PÁGINA ==========
+document.addEventListener("DOMContentLoaded", mostrarQtdLinks);
