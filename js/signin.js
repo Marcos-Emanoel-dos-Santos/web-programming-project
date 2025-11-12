@@ -51,7 +51,7 @@ function login() {
   const email = document.getElementById('email').value.trim();
   const password = document.getElementById('password').value.trim();
 
-  fetch('database/api/login.php', {
+  fetch('../database/api/login.php', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ email, password })
