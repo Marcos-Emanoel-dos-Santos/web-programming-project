@@ -127,7 +127,7 @@ async function criarLink() {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       credentials: "include",
-      body: JSON.stringify({ url_original: urlOriginal }),
+      body: JSON.stringify({ url_original: urlOriginal })
     });
 
     const data = await response.json();

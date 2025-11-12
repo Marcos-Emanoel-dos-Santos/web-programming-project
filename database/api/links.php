@@ -61,7 +61,7 @@ try {
 
             // gera código curto aleatório
             $caracteres = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-            $url_curta = substr(str_shuffle($caracteres), 0, 6);
+            $url_curta = 'https://wknot.' . substr(str_shuffle($caracteres), 0, 5);
 
             $stmt = $conn->prepare("
                 INSERT INTO Link (id_usuario, url_original, url_curta, data_expiracao)
