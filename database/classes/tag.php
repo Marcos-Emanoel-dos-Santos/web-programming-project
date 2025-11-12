@@ -3,7 +3,7 @@
  * Classe Tag - Gerencia tags/etiquetas
  */
 
-require_once '../config/database.php';
+require_once 'database/config/database.php';
 
 class Tag {
     private $conn;
