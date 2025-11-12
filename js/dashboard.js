@@ -27,7 +27,7 @@ document.addEventListener("click", (event) => {
 // ========== MOSTRAR NOME NA PÁGINA ==========
 async function mostrarNome() {
   try {
-    const response = await fetch("/database/api/checkSession.php", {
+    const response = await fetch("database/api/checkSession.php", {
       method: "GET",
       credentials: "include",
     });
@@ -52,7 +52,7 @@ async function mostrarNome() {
 // ========== LISTAR E CONTAR LINKS ==========
 async function mostrarQtdLinks() {
   try {
-    const response = await fetch("/database/api/links.php", {
+    const response = await fetch("database/api/links.php", {
       method: "GET",
       credentials: "include",
     });
