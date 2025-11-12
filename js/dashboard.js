@@ -28,7 +28,7 @@ document.addEventListener("click", (event) => {
 // ========== LISTAR E CONTAR LINKS ==========
 async function mostrarQtdLinks() {
   try {
-    const response = await fetch("http://localhost/web-programming-project/database/api/links.php", {
+    const response = await fetch("database/api/links.php", {
       method: "GET",
       credentials: "include",
     });
