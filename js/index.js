@@ -24,9 +24,8 @@ async function gerarLink() {
 		// Chama a API para criar o link
 		const response = await fetch('/database/api/links.php', {
 			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json'
-			},
+			headers: { "Content-Type": "application/json" },
+			credentials: "include",
 			body: JSON.stringify({
 				url_original: input_link
 			})
