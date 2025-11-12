@@ -28,7 +28,7 @@ document.addEventListener("click", (event) => {
 // ========== LISTAR E CONTAR LINKS ==========
 async function mostrarQtdLinks() {
   try {
-    const response = await fetch("/database/api/links.php", {
+    const response = await fetch("database/api/links.php", {
       method: "GET",
       credentials: "include",
     });
@@ -51,48 +51,66 @@ async function mostrarQtdLinks() {
       qtdLinks.textContent = `${links.length} links created.`;
     }
 
-    const nome = resultado.user || 'Lorem Ipsum Dolor';
-	const nomeDashboard = document.getElementById("profile_username_p");
-	
-	nomeDashboard.textContent = nome;
-
-    // Exemplo: renderizar os links numa lista (se quiser)
-    const container = document.getElementById("links_container");
-    if (container) {
-      container.innerHTML = "";
-      links.forEach((link) => {
-        const div = document.createElement("div");
-        div.classList.add("link_summary_div");
-        div.classList.add("link_related_subdiv");
-        div.dataset.id = link.id_link;
-        div.innerHTML = `
-		            <div class="element_URL_subdiv">
-                    <div class="element_URL_fitcontent_subdiv">
-                        <span></span>
-                        <p class="short_link_URL dashboard_link_URL">${link.url_curta}</p>
-                        <p class="long_link_URL dashboard_link_URL">${link.url_original}</p>
-                        <span></span>
-                    </div>
-                    <div class="element_tags_subdiv">
-                        <span>Tag 1</span>
-                        <span>Tag 2</span>
-                        <span>Tag 3</span>
-                    </div>
-                </div>
-
-                <div class="element_CRUD_subdiv">
-                    <button class="button_CRUD button_delete_element"><span></span>Delete</button>
-                    <button class="button_CRUD button_edit_element"><span></span>Edit</button>
-                </div>
-        `;
-        container.appendChild(div);
-      });
-    }
-
   } catch (erro) {
     console.error("Erro ao carregar links:", erro);
   }
 }
+
+
+async function renderizarLinks() {
+  try {
+    const response = await fetch("database/api/links.php", {
+      method: "GET",
+      credentials: "include",
+    });
+
+    if (!response.ok) throw new Error("Erro ao buscar links: " + response.status);
+
+    const resultado = await response.json();
+    if (!resultado.success) throw new Error(resultado.message);
+
+    const links = resultado.links || [];
+    const container = document.getElementById("links_container");
+    if (!container) return;
+
+    container.innerHTML = "";
+
+    links.forEach((link) => {
+      const div = document.createElement("div");
+      div.classList.add("link_summary_div", "link_related_subdiv");
+      div.dataset.id = link.id_link;
+
+      const tagsHTML = link.tags
+        ? link.tags.map((tag) => `<span>${tag}</span>`).join("")
+        : "";
+
+      div.innerHTML = `
+        <div class="element_URL_subdiv">
+          <div class="element_URL_fitcontent_subdiv">
+            <span></span>
+            <p class="short_link_URL dashboard_link_URL">${link.url_curta}</p>
+            <p class="long_link_URL dashboard_link_URL">${link.url_original}</p>
+            <span></span>
+          </div>
+          <div class="element_tags_subdiv">
+            ${tagsHTML}
+          </div>
+        </div>
+        <div class="element_CRUD_subdiv">
+          <button class="button_CRUD button_delete_element"><span></span>Delete</button>
+          <button class="button_CRUD button_edit_element"><span></span>Edit</button>
+        </div>
+      `;
+
+      container.appendChild(div);
+    });
+
+  } catch (erro) {
+    console.error("Erro ao renderizar links:", erro);
+  }
+}
+
+
 
 
 // ========== CRIAR LINK ==========
@@ -153,4 +171,7 @@ async function deletarLink(id_link) {
 
 
 // ========== AO CARREGAR A PÁGINA ==========
-document.addEventListener("DOMContentLoaded", mostrarQtdLinks);
+document.addEventListener("DOMContentLoaded", () => {
+  mostrarQtdLinks();
+  renderizarLinks();
+});

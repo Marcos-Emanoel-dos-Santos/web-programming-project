@@ -8,7 +8,7 @@ header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: GET, POST, DELETE, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type');
 
-require_once $_SERVER['DOCUMENT_ROOT'] . '/database/config/Conexao.php';
+require_once __DIR__ . '/../config/conexao.php';
 
 // Lida com pré-requisição (CORS)
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
@@ -43,7 +43,7 @@ try {
                 $links[] = $row;
             }
 
-            echo json_encode(['success' => true, 'links' => $links, 'user' => $_SESSION['nome']]);
+            echo json_encode(['success' => true, 'links' => $links]);
             break;
 
         // CRIAR NOVO LINK (POST)
