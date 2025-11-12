@@ -44,7 +44,7 @@ function validatePsswd(){
 	const passwordRepeat = document.getElementById('password_repeat').value.trim();
 
 	if (password.length < 8) {
-		document.getElementById('passwordError').textContent = 'Password must be at least 12 characters long.';
+		document.getElementById('passwordError').textContent = 'Password must be at least 8 characters long.';
 		return false;
 	} 
 	if(password != passwordRepeat){

@@ -177,7 +177,7 @@ async function deletarLink(id_link) {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
       credentials: "include",
-      body: JSON.stringify({ id_link }),
+      body: JSON.stringify({ id_link })
     });
 
     const data = await response.json();
@@ -192,6 +192,27 @@ async function deletarLink(id_link) {
     console.error("Erro ao deletar link:", error);
   }
 }
+
+
+async function deletarUsuario() {
+  try {
+    const response = await fetch("database/api/deleteUser.php", {
+      method: "DELETE",
+      credentials: "include"
+    });
+
+    const data = await response.json();
+    alert(data.message);
+
+    if (data.success) {
+      window.location.href = "signin.html";
+    }
+  } catch (err) {
+    console.error("Erro ao deletar usuário:", err);
+    alert("Erro ao tentar deletar conta.");
+  }
+}
+
 
 
 // ========== AO CARREGAR A PÁGINA ==========
