@@ -29,17 +29,27 @@ try {
 
     switch ($_SERVER['REQUEST_METHOD']) {
 
-        // LISTAR LINKS (GET)
+        // LISTAR LINKS COM SUAS TAGS (GET)
         case 'GET':
-            $stmt = $conn->prepare("SELECT id_link, url_original, url_curta, total_cliques, data_criacao 
-                                    FROM Link 
-                                    WHERE id_usuario = ?");
+            $stmt = $conn->prepare("SELECT
+                                        l.id_link,
+                                        l.url_original,
+                                        l.url_curta,
+                                        l.total_cliques,
+                                        l.data_criacao,
+                                        GROUP_CONCAT(t.nome) AS tags
+                                    FROM Link l
+                                    LEFT JOIN Link_Tag lt ON l.id_link = lt.id_link
+                                    LEFT JOIN Tag t ON lt.id_tag = t.id_tag
+                                    WHERE l.id_usuario = ?
+                                    GROUP BY l.id_link");
             $stmt->bind_param("i", $id_usuario);
             $stmt->execute();
             $result = $stmt->get_result();
 
             $links = [];
             while ($row = $result->fetch_assoc()) {
+                $row['tags'] = $row['tags'] ? explode(',', $row['tags']) : [];
                 $links[] = $row;
             }
 
