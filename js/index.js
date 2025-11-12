@@ -66,9 +66,57 @@ botaoCopiar.addEventListener('click', () => {
 	}
 
 	navigator.clipboard.writeText(output_p);
-	
-	// Feedback visual (opcional)
-	const originalSrc = botaoCopiar.src;
-	// Você pode adicionar um feedback aqui se quiser
-	console.log('Link copiado!');
 });
+
+
+async function atualizarNavBar() {
+  try {
+    const response = await fetch("database/api/checkSession.php", {
+      credentials: "include",
+    });
+
+    const data = await response.json();
+    const nav = document.querySelector("nav");
+    if (!nav) return;
+
+    // Remove o botão anterior (sign in / sign out)
+    const antigo = nav.querySelector(".nav_bar_elemento.sign");
+    if (antigo) antigo.remove();
+
+    // Cria o novo elemento
+    const div = document.createElement("div");
+    div.classList.add("nav_bar_elemento", "sign");
+    const a = document.createElement("a");
+    a.href = "#";
+    a.textContent = data.loggedIn ? "Sign out" : "Sign in";
+    div.appendChild(a);
+
+    const span = document.createElement("span");
+    span.classList.add("nav_bar_animacao");
+    div.appendChild(span);
+
+    // Insere na barra
+    nav.insertBefore(div, nav.children[1]);
+
+    // Define comportamento
+    if (data.loggedIn) {
+      a.addEventListener("click", async (e) => {
+        e.preventDefault();
+        await fetch("database/api/logout.php", {
+          method: "POST",
+          credentials: "include",
+        });
+        window.location.href = "signin.html";
+      });
+    } else {
+      a.href = "signin.html";
+    }
+  } catch (err) {
+    console.error("Erro ao atualizar navbar:", err);
+  }
+}
+
+atualizarNavBar();
+
+
+document.addEventListener("DOMContentLoaded", atualizarNavBar)
