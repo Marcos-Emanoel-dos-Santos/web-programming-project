@@ -22,13 +22,13 @@ async function gerarLink() {
 
 	try {
 		// Chama a API para criar o link
-		const response = await fetch('api/links.php', {
+		const response = await fetch('/database/api/links.php', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
 			},
 			body: JSON.stringify({
-				url: input_link
+				url_original: input_link
 			})
 		});
 

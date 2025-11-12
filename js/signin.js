@@ -22,7 +22,7 @@ function validateEmail(){
 	// regex for email validation (eu totalmente fiz isso de cabeça)
 	const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 	if (!emailRegex.test(email)) {
-		document.getElementById('emailError').textContent = 'Please enter a valid email address.';
+		document.getElementById('emailError').textContent = 'Favor inserir um endereço de e-mail válido.';
 		return false;
 	}
 	return true;
@@ -51,7 +51,7 @@ function login() {
   const email = document.getElementById('email').value.trim();
   const password = document.getElementById('password').value.trim();
 
-  fetch('database/api/login.php', {
+  fetch('/database/api/login.php', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ email, password })

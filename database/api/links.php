@@ -8,7 +8,7 @@ header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: GET, POST, DELETE, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type');
 
-require_once __DIR__ . '../classes/Conexao.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/database/config/Conexao.php';
 
 // Lida com pré-requisição (CORS)
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
