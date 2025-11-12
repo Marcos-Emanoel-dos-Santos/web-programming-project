@@ -97,7 +97,7 @@ async function renderizarLinks() {
           </div>
         </div>
         <div class="element_CRUD_subdiv">
-          <button class="button_CRUD button_delete_element"><span></span>Delete</button>
+          <button class="button_CRUD button_delete_element" onclick="${link.id_link}"><span></span>Delete</button>
           <button class="button_CRUD button_edit_element"><span></span>Edit</button>
         </div>
       `;
@@ -123,7 +123,7 @@ async function criarLink() {
       return;
     }
 
-    const response = await fetch("http://localhost/web-programming-project/database/api/links.php", {
+    const response = await fetch("database/api/links.php", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       credentials: "include",
@@ -149,7 +149,7 @@ async function criarLink() {
 // ========== DELETAR LINK ==========
 async function deletarLink(id_link) {
   try {
-    const response = await fetch("http://localhost/web-programming-project/database/api/links.php", {
+    const response = await fetch("database/api/links.php", {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
       credentials: "include",
