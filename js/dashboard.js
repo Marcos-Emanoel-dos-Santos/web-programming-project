@@ -24,11 +24,35 @@ document.addEventListener("click", (event) => {
   }
 });
 
+// ========== MOSTRAR NOME NA PÁGINA ==========
+async function mostrarNome() {
+  try {
+    const response = await fetch("/database/api/checkSession.php", {
+      method: "GET",
+      credentials: "include",
+    });
+
+    if (!response.ok) throw new Error("Erro ao buscar info do usuário: " + response.status);
+
+    const resultado = await response.json();
+    if (!resultado.loggedIn) throw new Error(resultado.message);
+
+    const nome = resultado.user.nome || 'Lorem Ipsum Dolor';
+    const username = document.getElementById("profile_username_p");
+
+    if (!username) return;
+	
+	username.textContent = nome;
+
+  } catch (erro) {
+    console.error("Erro ao carregar nome:", erro);
+  }
+}
 
 // ========== LISTAR E CONTAR LINKS ==========
 async function mostrarQtdLinks() {
   try {
-    const response = await fetch("database/api/links.php", {
+    const response = await fetch("/database/api/links.php", {
       method: "GET",
       credentials: "include",
     });
@@ -172,6 +196,7 @@ async function deletarLink(id_link) {
 
 // ========== AO CARREGAR A PÁGINA ==========
 document.addEventListener("DOMContentLoaded", () => {
+  mostrarNome();
   mostrarQtdLinks();
   renderizarLinks();
 });
