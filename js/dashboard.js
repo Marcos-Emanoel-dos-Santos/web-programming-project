@@ -51,17 +51,39 @@ async function mostrarQtdLinks() {
       qtdLinks.textContent = `${links.length} links created.`;
     }
 
+    const nome = resultado.user || 'Lorem Ipsum Dolor';
+	const nomeDashboard = document.getElementById("profile_username_p");
+	
+	nomeDashboard.textContent = nome;
+
     // Exemplo: renderizar os links numa lista (se quiser)
     const container = document.getElementById("links_container");
     if (container) {
       container.innerHTML = "";
       links.forEach((link) => {
         const div = document.createElement("div");
+        div.classList.add("link_summary_div");
         div.classList.add("link_related_subdiv");
         div.dataset.id = link.id_link;
         div.innerHTML = `
-          <div class="element_URL_fitcontent_subdiv">${link.url_curta}</div>
-          <button class="button_delete_element">Delete</button>
+		            <div class="element_URL_subdiv">
+                    <div class="element_URL_fitcontent_subdiv">
+                        <span></span>
+                        <p class="short_link_URL dashboard_link_URL">${link.url_curta}</p>
+                        <p class="long_link_URL dashboard_link_URL">${link.url_original}</p>
+                        <span></span>
+                    </div>
+                    <div class="element_tags_subdiv">
+                        <span>Tag 1</span>
+                        <span>Tag 2</span>
+                        <span>Tag 3</span>
+                    </div>
+                </div>
+
+                <div class="element_CRUD_subdiv">
+                    <button class="button_CRUD button_delete_element"><span></span>Delete</button>
+                    <button class="button_CRUD button_edit_element"><span></span>Edit</button>
+                </div>
         `;
         container.appendChild(div);
       });

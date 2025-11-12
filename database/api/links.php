@@ -43,7 +43,7 @@ try {
                 $links[] = $row;
             }
 
-            echo json_encode(['success' => true, 'links' => $links]);
+            echo json_encode(['success' => true, 'links' => $links, 'user' => $_SESSION['nome']]);
             break;
 
         // CRIAR NOVO LINK (POST)
