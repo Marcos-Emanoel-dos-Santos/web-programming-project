@@ -215,6 +215,97 @@ async function deletarUsuario() {
 
 
 
+document.addEventListener("submit", async (event) => {
+    
+    if (event.target.id === "form_editar_perfil") {
+        
+        event.preventDefault(); 
+        
+        const nome = document.getElementById("edit_nome").value.trim();
+        const email = document.getElementById("edit_email").value.trim();
+
+        await enviarAtualizacaoPerfil(nome, email);
+    }
+});
+
+
+function editarUsuario() {
+    const modal = document.getElementById('form_editar_perfil');
+
+    modal.classList.add('show');
+}
+function fecharModalEditar() {
+    const modal = document.getElementById('form_editar_perfil');
+      modal.classList.remove('show');
+      console.log("Pao")
+}
+
+
+
+document.addEventListener("submit", (event) => {
+    if (event.target.id === "form_editar_perfil") {
+        
+        event.preventDefault(); 
+        
+        const nome = document.getElementById("edit_nome").value.trim();
+        const email = document.getElementById("edit_email").value.trim();
+
+        enviarAtualizacaoPerfil(nome, email);
+    }
+});
+
+
+async function enviarAtualizacaoPerfil(nome, email) {
+    
+  const feedbackEl = document.getElementById("mensagem_update");
+
+  if (!nome && !email) {
+      if (feedbackEl) feedbackEl.textContent = "Preencha pelo menos um campo para atualizar.";
+      return; 
+  }
+
+
+  const data = {
+      nome: nome,
+      email: email
+  };
+
+  try {
+    const response = await fetch("database/api/editUser.php", {
+      method: "PUT",
+      headers: {
+          "Content-Type": "application/json"
+      },
+      credentials: "include", 
+      body: JSON.stringify(data)
+  });
+
+  const resultado = await response.json();
+    if (response.ok) {
+        alert(resultado.message);
+            
+        if (nome) {
+            await mostrarNome();
+        }
+            
+        document.getElementById("form_editar_perfil").reset();
+        if (feedbackEl) feedbackEl.textContent = "";
+        } else {
+            if (feedbackEl) feedbackEl.textContent = "Erro: " + resultado.message;
+            alert("Erro: " + resultado.message);
+        }
+
+    } catch (error) {
+        console.error("Falha na requisição de update:", error);
+        if (feedbackEl) feedbackEl.textContent = "Erro de conexão. Tente novamente.";
+    }
+    finally{
+      fecharModalEditar();
+    }
+}
+
+
+
 // ========== AO CARREGAR A PÁGINA ==========
 document.addEventListener("DOMContentLoaded", () => {
   mostrarNome();

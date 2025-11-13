@@ -47,9 +47,30 @@
                 <p id="profile_links_count_p"></p>
             </div>
             <div class="account_CRUD">
-                <button class="account_edit_CRUD button_CRUD"><span></span>Edit account</button>
+                <button class="account_edit_CRUD button_CRUD" onclick="editarUsuario()"><span></span>Edit account</button>
                 <button class="account_delete_CRUD button_CRUD" onclick="deletarUsuario()"><span></span>Delete account</button>
             </div>
+            <form id="form_editar_perfil">
+    
+                <div class="container_CRUD_usuario">
+                    <h3>Editar Perfil</h3>
+                    <div class="edicao_CRUD_usuario">
+                        <label for="edit_nome">Novo Nome:</label>
+                        <input type="text" id="edit_nome" name="nome">
+                    </div>
+                    
+                    <div class="edicao_CRUD_usuario">
+                        <label for="edit_email">Novo Email:</label>
+                        <input type="email" id="edit_email" name="email">
+                    </div>
+                    
+
+                    <button type="submit">Salvar Alterações</button>
+                </div>
+                
+                
+                <p id="mensagem_update"></p> 
+            </form>
         </div>
 
         <div class="link_related_div">

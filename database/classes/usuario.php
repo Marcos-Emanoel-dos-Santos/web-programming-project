@@ -115,6 +115,37 @@ class Usuario {
         return $this;
     }
 
+    public function atualizar() {
+        if (empty($this->id_usuario)) {
+            throw new Exception("Usuário não carregado.");
+        }
+
+        // Verifica se o novo email já está em uso por OUTRO usuário
+        $sql_check = "SELECT id_usuario FROM Usuario WHERE email = ? AND id_usuario != ?";
+        $stmt_check = $this->conn->prepare($sql_check);
+        $stmt_check->bind_param("si", $this->email, $this->id_usuario);
+        $stmt_check->execute();
+        $result_check = $stmt_check->get_result();
+        
+        if ($result_check->num_rows > 0) {
+            // Se encontrou, o email já está em uso
+            throw new Exception("O email informado já está em uso por outra conta.");
+        }
+
+        // Se passou nas verificações, atualiza o usuário
+        $sql = "UPDATE Usuario SET nome = ?, email = ? WHERE id_usuario = ?";
+        $stmt = $this->conn->prepare($sql);
+
+        if (!$stmt) {
+             throw new Exception("Erro na preparação da query de update: " . $this->conn->error);
+        }
+
+        // Usa as propriedades do próprio objeto para a query
+        $stmt->bind_param("ssi", $this->nome, $this->email, $this->id_usuario);
+
+        return $stmt->execute();
+    }
+
     // Deleta um usuário e seus relacionamentos
     public function deletar($id_usuario) {
         // Isso vai apagar em cascata tudo que está relacionado via ON DELETE CASCADE

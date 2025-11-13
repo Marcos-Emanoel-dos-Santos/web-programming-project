@@ -360,6 +360,63 @@ input[type="radio"] {
 }
 
 
+#form_editar_perfil{
+    position:fixed;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+    max-width: 90%;
+    height: 350px;
+    max-height: 80%;
+    background-color: var(--user_CRUD_bg);
+    border-radius: var(--general_border_radius);
+    flex-direction: column;
+    left: 50%;
+    top: 50%;
+    z-index: 1000;
+    color: var(--general_text_color);
+    transform: translate(-50%, -50%);
+}
+
+
+.container_CRUD_usuario{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.edicao_CRUD_usuario{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    margin-bottom: 20px;
+    padding: 0 10%;
+}
+
+.edicao_CRUD_usuario input {
+    border-radius: var(--general_border_radius);
+    border: none;
+    padding: 5px 0 5px 10px;
+}
+
+
+.container_CRUD_usuario button{
+    width: fit-content;
+    background-color: var(--edit_button_anim_bg);
+    border-radius: var(--general_border_radius);
+    border: none;
+    padding: 7px 20px;
+    cursor: pointer;
+}
+
+.show{
+    display: flex !important;
+}
+
+
 
 @media screen and (max-width: 740px){
 main{
