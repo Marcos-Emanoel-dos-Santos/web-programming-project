@@ -217,7 +217,7 @@ async function deletarUsuario() {
 
 document.addEventListener("submit", async (event) => {
     
-    if (event.target.id === "form_editar_perfil") {
+    if (event.target.id === "edit_profile_form") {
         
         event.preventDefault(); 
         
@@ -230,20 +230,31 @@ document.addEventListener("submit", async (event) => {
 
 
 function editarUsuario() {
-    const modal = document.getElementById('form_editar_perfil');
-
+    const modal = document.getElementById('edit_profile_form');
+    const fundo = document.getElementsByClassName('shadow')[0];
     modal.classList.add('show');
+    fundo.classList.add('show');
 }
 function fecharModalEditar() {
-    const modal = document.getElementById('form_editar_perfil');
-      modal.classList.remove('show');
-      console.log("Pao")
+    const modal = document.getElementById('edit_profile_form');
+    const fundo = document.getElementsByClassName('shadow')[0];
+    const inpArr = document.getElementsByClassName('account_edit_input');
+    for(i=0; i < inpArr.length; i++){
+      inpArr[i].value = "";
+    }
+    modal.classList.remove('show');
+    fundo.classList.remove('show');
+
 }
 
 
+const fecharModalSpan = document.getElementById('close_edit_form');
+fecharModalSpan.addEventListener("click", () => {
+    fecharModalEditar();
+})
 
 document.addEventListener("submit", (event) => {
-    if (event.target.id === "form_editar_perfil") {
+    if (event.target.id === "edit_profile_form") {
         
         event.preventDefault(); 
         
@@ -260,7 +271,7 @@ async function enviarAtualizacaoPerfil(nome, email) {
   const feedbackEl = document.getElementById("mensagem_update");
 
   if (!nome && !email) {
-      if (feedbackEl) feedbackEl.textContent = "Preencha pelo menos um campo para atualizar.";
+      if (feedbackEl) feedbackEl.textContent = "Fill at least one field to update.";
       return; 
   }
 
@@ -288,7 +299,7 @@ async function enviarAtualizacaoPerfil(nome, email) {
             await mostrarNome();
         }
             
-        document.getElementById("form_editar_perfil").reset();
+        document.getElementById("edit_profile_form").reset();
         if (feedbackEl) feedbackEl.textContent = "";
         } else {
             if (feedbackEl) feedbackEl.textContent = "Erro: " + resultado.message;

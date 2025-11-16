@@ -48,6 +48,125 @@ main{
     margin-top: 10px;
 }
 
+
+.shadow{
+    position: absolute;
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    z-index: 100;
+    background-color: black;
+    opacity: 0.4;
+}
+
+
+#edit_profile_form {
+    position: fixed;
+    display: none;
+    flex-direction: column;
+    gap: 25px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 450px;
+    padding: 35px 40px;
+    background: var(--user_CRUD_bg);
+    color: var(--general_text_color);
+    border-radius: var(--general_border_radius);
+    box-shadow: 0 0 25px rgba(0,0,0,0.4);
+    z-index: 1000;
+}
+
+#close_edit_form {
+    position: absolute;
+    top: 12px;
+    right: 15px;
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--secondary_text_color);
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#edit_profile_form h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    text-align: center;
+    color: var(--highlight_text_color);
+}
+
+
+.account_update_container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 20px;
+}
+
+
+.account_edit {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+
+.account_edit label {
+    font-size: 0.95rem;
+    margin-bottom: 6px;
+    color: var(--secondary_text_color);
+}
+
+
+.account_edit_input{
+    width: calc(100% - 12px - 14px);
+    padding: 12px 14px;
+    background: var(--track-bg);
+    color: var(--general_text_color);
+    border: 1px solid #4a3c67;
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+    transition: 0.2s;
+}
+
+.account_edit input:focus {
+    border-color: var(--highlight_blue);
+    box-shadow: 0 0 0 2px rgba(52,109,233,0.4);
+}
+
+
+.account_update_container button {
+    align-self: center;
+    padding: 10px 35px;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: var(--general_border_radius);
+    background: var(--edit_button_anim_bg);
+    color: #000;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+
+.account_update_container button:hover {
+    transform: translateY(-2px);
+    background: #2bff73;
+    box-shadow: 0 0 12px rgba(41,255,110,0.4);
+}
+
+#mensagem_update {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 0.95rem;
+}
+
+
+
 .button_CRUD{
     display: flex;
     align-items: center;
@@ -62,7 +181,7 @@ main{
     border: none;
     transition:
         background-color 0.4s ease-in,
-        scale 0.4s ease-in;
+        transform 0.4s ease-in-out;
 }
 
 .button_CRUD span{
@@ -75,10 +194,7 @@ main{
     background-color: var(--link_bg);
     z-index: -1;
     border-radius: 50%;
-    transition:
-        width 0.4s ease-in,
-        height 0.4s ease-in,
-        background-color 0.3s ease-in;
+    transition: background-color 0.3s ease-in;
 }
 
 .account_CRUD > button{
@@ -91,7 +207,7 @@ main{
 
 .button_CRUD:hover{
     cursor: pointer;
-    scale: 1.05;
+    transform: translateY(-2px);
 }
 
 .button_CRUD:hover span{
@@ -99,10 +215,16 @@ main{
     height: 200px;
 }
 
+.account_edit_CRUD:hover{
+    box-shadow: 0 0 12px rgba(24, 163, 255, 0.4);
+}
 .account_edit_CRUD:hover span{
-    background-color: var(--edit_button_anim_bg);
+    background-color: #0d77be;
 }
 
+.account_delete_CRUD:hover{
+    box-shadow: 0 0 12px rgba(255, 17, 37, 0.4);
+}
 .account_delete_CRUD:hover span{
     background-color: var(--delete_button_anim_bg);
 }
@@ -354,62 +476,14 @@ input[type="radio"] {
 .button_delete_element:hover span{
     background-color: var(--delete_button_anim_bg);
 }
-
+.button_delete_element:hover {
+    box-shadow: 0 0 12px rgba(255, 17, 37, 0.4);
+}
 .button_edit_element:hover span{
     background-color: var(--edit_button_anim_bg);
 }
-
-
-#form_editar_perfil{
-    position:fixed;
-    display: none;
-    justify-content: center;
-    align-items: center;
-    width: 500px;
-    max-width: 90%;
-    height: 350px;
-    max-height: 80%;
-    background-color: var(--user_CRUD_bg);
-    border-radius: var(--general_border_radius);
-    flex-direction: column;
-    left: 50%;
-    top: 50%;
-    z-index: 1000;
-    color: var(--general_text_color);
-    transform: translate(-50%, -50%);
-}
-
-
-.container_CRUD_usuario{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-}
-
-.edicao_CRUD_usuario{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: stretch;
-    margin-bottom: 20px;
-    padding: 0 10%;
-}
-
-.edicao_CRUD_usuario input {
-    border-radius: var(--general_border_radius);
-    border: none;
-    padding: 5px 0 5px 10px;
-}
-
-
-.container_CRUD_usuario button{
-    width: fit-content;
-    background-color: var(--edit_button_anim_bg);
-    border-radius: var(--general_border_radius);
-    border: none;
-    padding: 7px 20px;
-    cursor: pointer;
+.button_edit_element:hover{
+    box-shadow: 0 0 12px rgba(41,255,110,0.4);
 }
 
 .show{
@@ -526,14 +600,6 @@ main{
     justify-self: center;
     gap: 10px;
     padding-bottom: 30px;
-}
-
-.button_delete_element:hover span{
-    background-color: var(--delete_button_anim_bg);
-}
-
-.button_edit_element:hover span{
-    background-color: var(--edit_button_anim_bg);
 }
 
 }

@@ -50,27 +50,30 @@
                 <button class="account_edit_CRUD button_CRUD" onclick="editarUsuario()"><span></span>Edit account</button>
                 <button class="account_delete_CRUD button_CRUD" onclick="deletarUsuario()"><span></span>Delete account</button>
             </div>
-            <form id="form_editar_perfil">
-    
-                <div class="container_CRUD_usuario">
-                    <h3>Editar Perfil</h3>
-                    <div class="edicao_CRUD_usuario">
-                        <label for="edit_nome">Novo Nome:</label>
-                        <input type="text" id="edit_nome" name="nome">
-                    </div>
-                    
-                    <div class="edicao_CRUD_usuario">
-                        <label for="edit_email">Novo Email:</label>
-                        <input type="email" id="edit_email" name="email">
-                    </div>
-                    
 
-                    <button type="submit">Salvar Alterações</button>
+            <div class="shadow"></div>
+
+            <form id="edit_profile_form">
+                <span id="close_edit_form">&times;</span>
+                <div class="account_update_container">
+                    <h3>Edit profile</h3>
+                    <div class="account_edit">
+                        <label for="edit_nome">Name:</label>
+                        <input type="text" id="edit_nome" name="nome" class="account_edit_input">
+                    </div>
+                        
+                    <div class="account_edit">
+                        <label for="edit_email">Email:</label>
+                        <input type="email" id="edit_email" name="email" class="account_edit_input">
+                    </div>
+                    
+                    <button type="submit">Save changes</button>
                 </div>
-                
-                
+                    
                 <p id="mensagem_update"></p> 
             </form>
+            
+            
         </div>
 
         <div class="link_related_div">
