@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '../config/conexao.php';
+require_once __DIR__ . '/../config/conexao.php';
 
 $con = new Conexao();
 $conn = $con->getConexao();

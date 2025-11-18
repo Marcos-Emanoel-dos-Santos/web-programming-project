@@ -1,32 +1,34 @@
-:root {
+:root{
     /* TEXT COLORS */
-    --general_text_color: #CBD5E1;
-    --dark_text_color: #94A3B8;
-    --highlight_text_color: #FFFFFF;
-    --secondary_text_color: #64748B;
+    --general_text_color: #cdc9d6;
+    --dark_text_color: #3D414A;
+    --highlight_text_color: #b1a8c7;
+    --secondary_text_color: #A6A6A6;
+
 
     /* HIGHLIGHT COLORS */
-    --highlight_blue: #3B82F6;
-    --hover_highlight_blue: #60A5FA;
-    --highlight_purple: #8B5CF6;
+    --highlight_blue: #346DE9;
+    --hover_highlight_blue: #5a80f0;
+    --highlight_purple: #460EC8;
+
 
     /* BACKGROUND COLORS */
-    --header_bg: #0B0E16;
-    --general_bg: #0F1221;
-    
-    --user_CRUD_bg: #1E2235;   
-    --login_bg: #1E2235;       
-    
-    /* INPUT/LINK ELEMENTS */
-    --link_bg: #2D324A;
-    --footer_bg: #020408;
+    --header_bg: #140D1C;
+    --general_bg: #151122;
+    --user_CRUD_bg: #301e4e;
+    --footer_bg: #000000;
+    --link_bg: #DAD7E9;
+    --login_bg: #c4c2cc;
+
 
     /* BUTTON COLORS */
-    --delete_button_anim_bg: #F43F5E;
-    --edit_button_anim_bg: #10B981;
+    --delete_button_anim_bg: #ec091c;
+    --edit_button_anim_bg: #19ee60;
+
 
     /* BORDER SPECIFICATIONS */
-    --general_border_radius: 12px;
-    
+    --general_border_radius: 10.5px;
+
+    --track-bg: #21193a;
     --link_URL_width: 300px;
 }

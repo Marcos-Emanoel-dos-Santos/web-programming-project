@@ -2,7 +2,7 @@ main{
     display: grid;
     grid-template-columns: 3fr 7fr;
     min-height: calc(100vh - 142px);
-    background-color: var(--general_bg);
+    background-color: #151122;
 }
 
 .user_profile{
@@ -125,9 +125,9 @@ main{
 .account_edit_input{
     width: calc(100% - 12px - 14px);
     padding: 12px 14px;
-    background: var(--link_bg);
+    background: var(--track-bg);
     color: var(--general_text_color);
-    border: 1px solid var(--secondary_text_color);
+    border: 1px solid #4a3c67;
     border-radius: 8px;
     font-size: 1rem;
     outline: none;
@@ -136,7 +136,7 @@ main{
 
 .account_edit input:focus {
     border-color: var(--highlight_blue);
-    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
+    box-shadow: 0 0 0 2px rgba(52,109,233,0.4);
 }
 
 
@@ -156,7 +156,7 @@ main{
 .account_update_container button:hover {
     transform: translateY(-2px);
     background: #2bff73;
-    box-shadow: 0 0 12px rgba(16, 185, 129, 0.4);
+    box-shadow: 0 0 12px rgba(41,255,110,0.4);
 }
 
 #mensagem_update {
@@ -216,14 +216,14 @@ main{
 }
 
 .account_edit_CRUD:hover{
-    box-shadow: 0 0 12px rgba(59, 130, 246, 0.5);
+    box-shadow: 0 0 12px rgba(24, 163, 255, 0.4);
 }
-.account_edit_CRUD:hover span, .button_edit_element:hover span{
-    background-color: var(--highlight_blue);
+.account_edit_CRUD:hover span{
+    background-color: #0d77be;
 }
 
 .account_delete_CRUD:hover{
-    box-shadow: 0 0 12px rgba(244, 63, 94, 0.5);
+    box-shadow: 0 0 12px rgba(255, 17, 37, 0.4);
 }
 .account_delete_CRUD:hover span{
     background-color: var(--delete_button_anim_bg);
@@ -448,7 +448,7 @@ input[type="radio"] {
     width: 15px;
 }
 .element_tags_subdiv::-webkit-scrollbar-track {
-    background-color: var(--link_bg);
+    background-color: var(--track-bg);
 }
 
 .element_tags_subdiv span{
@@ -462,7 +462,7 @@ input[type="radio"] {
 }
 
 .element_tags_subdiv span:hover{
-    background-color: var(--secondary_text_color);
+    background-color: #aba7bb;
     cursor: pointer;
 }
 
