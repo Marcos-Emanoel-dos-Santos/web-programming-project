@@ -1,31 +1,29 @@
 :root {
-    /* TEXT COLORS - Frios e legíveis */
-    --general_text_color: #CBD5E1;  /* Um cinza azulado claro, menos cansativo que branco puro */
-    --dark_text_color: #94A3B8;     /* Para subtítulos ou textos secundários */
-    --highlight_text_color: #FFFFFF; /* Branco puro para títulos */
-    --secondary_text_color: #64748B; /* Texto desativado ou placeholder */
+    /* TEXT COLORS */
+    --general_text_color: #CBD5E1;
+    --dark_text_color: #94A3B8;
+    --highlight_text_color: #FFFFFF;
+    --secondary_text_color: #64748B;
 
-    /* HIGHLIGHT COLORS - Elétricos */
-    --highlight_blue: #3B82F6;       /* Um azul royal moderno e brilhante */
-    --hover_highlight_blue: #60A5FA; /* Azul mais claro para o hover */
-    --highlight_purple: #8B5CF6;     /* Roxo violeta para complementar o azul */
+    /* HIGHLIGHT COLORS */
+    --highlight_blue: #3B82F6;
+    --hover_highlight_blue: #60A5FA;
+    --highlight_purple: #8B5CF6;
 
-    /* BACKGROUND COLORS - A mágica do tom sobre tom */
-    --header_bg: #0B0E16;      /* Quase preto, para o cabeçalho sumir no topo */
-    --general_bg: #0F1221;     /* O SEU AZUL: Profundo, moderno e limpo */
+    /* BACKGROUND COLORS */
+    --header_bg: #0B0E16;
+    --general_bg: #0F1221;
     
-    /* Containers (Cards/Login) */
-    /* Aqui está a maior mudança: em vez de cinza claro, usamos azul marinho médio */
     --user_CRUD_bg: #1E2235;   
     --login_bg: #1E2235;       
     
-    /* Elementos de Input/Link */
-    --link_bg: #2D324A;        /* Um tom acima do card para destacar o input/link */
-    --footer_bg: #020408;      /* Preto azulado */
+    /* INPUT/LINK ELEMENTS */
+    --link_bg: #2D324A;
+    --footer_bg: #020408;
 
     /* BUTTON COLORS */
-    --delete_button_anim_bg: #F43F5E; /* Rose/Vermelho moderno */
-    --edit_button_anim_bg: #10B981;   /* Verde Esmeralda */
+    --delete_button_anim_bg: #F43F5E;
+    --edit_button_anim_bg: #10B981;
 
     /* BORDER SPECIFICATIONS */
     --general_border_radius: 12px;
