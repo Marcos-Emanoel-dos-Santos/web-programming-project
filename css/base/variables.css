@@ -1,34 +1,34 @@
-:root{
-    /* TEXT COLORS */
-    --general_text_color: #cdc9d6;
-    --dark_text_color: #3D414A;
-    --highlight_text_color: #b1a8c7;
-    --secondary_text_color: #A6A6A6;
+:root {
+    /* TEXT COLORS - Frios e legíveis */
+    --general_text_color: #CBD5E1;  /* Um cinza azulado claro, menos cansativo que branco puro */
+    --dark_text_color: #94A3B8;     /* Para subtítulos ou textos secundários */
+    --highlight_text_color: #FFFFFF; /* Branco puro para títulos */
+    --secondary_text_color: #64748B; /* Texto desativado ou placeholder */
 
+    /* HIGHLIGHT COLORS - Elétricos */
+    --highlight_blue: #3B82F6;       /* Um azul royal moderno e brilhante */
+    --hover_highlight_blue: #60A5FA; /* Azul mais claro para o hover */
+    --highlight_purple: #8B5CF6;     /* Roxo violeta para complementar o azul */
 
-    /* HIGHLIGHT COLORS */
-    --highlight_blue: #346DE9;
-    --hover_highlight_blue: #5a80f0;
-    --highlight_purple: #460EC8;
-
-
-    /* BACKGROUND COLORS */
-    --header_bg: #140D1C;
-    --general_bg: #151122;
-    --user_CRUD_bg: #301e4e;
-    --footer_bg: #000000;
-    --link_bg: #DAD7E9;
-    --login_bg: #c4c2cc;
-
+    /* BACKGROUND COLORS - A mágica do tom sobre tom */
+    --header_bg: #0B0E16;      /* Quase preto, para o cabeçalho sumir no topo */
+    --general_bg: #0F1221;     /* O SEU AZUL: Profundo, moderno e limpo */
+    
+    /* Containers (Cards/Login) */
+    /* Aqui está a maior mudança: em vez de cinza claro, usamos azul marinho médio */
+    --user_CRUD_bg: #1E2235;   
+    --login_bg: #1E2235;       
+    
+    /* Elementos de Input/Link */
+    --link_bg: #2D324A;        /* Um tom acima do card para destacar o input/link */
+    --footer_bg: #020408;      /* Preto azulado */
 
     /* BUTTON COLORS */
-    --delete_button_anim_bg: #ec091c;
-    --edit_button_anim_bg: #19ee60;
-
+    --delete_button_anim_bg: #F43F5E; /* Rose/Vermelho moderno */
+    --edit_button_anim_bg: #10B981;   /* Verde Esmeralda */
 
     /* BORDER SPECIFICATIONS */
-    --general_border_radius: 10.5px;
-
-    --track-bg: #21193a;
+    --general_border_radius: 12px;
+    
     --link_URL_width: 300px;
 }
