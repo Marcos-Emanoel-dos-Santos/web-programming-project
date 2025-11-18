@@ -37,13 +37,12 @@ async function mostrarNome() {
     const resultado = await response.json();
     if (!resultado.loggedIn) throw new Error(resultado.message);
 
-    const nome = resultado.user.nome || 'Lorem Ipsum Dolor';
+    const nome = resultado.user.nome || 'Unknown';
     const username = document.getElementById("profile_username_p");
 
     if (!username) return;
 	
-	username.textContent = nome;
-
+	  username.textContent = nome;
   } catch (erro) {
     console.error("Erro ao carregar nome:", erro);
   }
@@ -228,21 +227,6 @@ async function deletarUsuario() {
 }
 
 
-
-document.addEventListener("submit", async (event) => {
-    
-    if (event.target.id === "edit_profile_form") {
-        
-        event.preventDefault(); 
-        
-        const nome = document.getElementById("edit_nome").value.trim();
-        const email = document.getElementById("edit_email").value.trim();
-
-        await enviarAtualizacaoPerfil(nome, email);
-    }
-});
-
-
 function editarUsuario() {
     const modal = document.getElementById('edit_profile_form');
     const fundo = document.getElementsByClassName('shadow')[0];
@@ -281,7 +265,6 @@ document.addEventListener("submit", (event) => {
 
 
 async function enviarAtualizacaoPerfil(nome, email) {
-    
   const feedbackEl = document.getElementById("mensagem_update");
 
   if (!nome && !email) {
@@ -308,7 +291,6 @@ async function enviarAtualizacaoPerfil(nome, email) {
   const resultado = await response.json();
     if (response.ok) {
         alert(resultado.message);
-            
         if (nome) {
             await mostrarNome();
         }

@@ -49,9 +49,13 @@ try {
         exit;
     }
 
-
-    $usuario->nome = $data['nome'] ?? $usuario->nome;
-    $usuario->email = $data['email'] ?? $usuario->email;
+    if (!empty($data['nome'])) {
+        $usuario->nome = $data['nome'] ?? $usuario->nome;;
+    }
+    if (!empty($data['email'])) {
+        $usuario->email = $data['email'] ?? $usuario->email;
+    }
+    
 
     if ($usuario->atualizar()) {
         $_SESSION['nome'] = $usuario->nome;
