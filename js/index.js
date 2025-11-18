@@ -1,4 +1,4 @@
-// Função adaptada para gerar link via API PHP
+// ========== GERAR LINK VIA PHP ==========
 async function gerarLink() {
 	const output_div = document.getElementById('output-link_encurtado');
 	const input_link = document.getElementById('input-link_encurtado').value;
@@ -58,7 +58,6 @@ async function gerarLink() {
 
 // Mantém a funcionalidade de copiar
 const botaoCopiar = document.getElementById('botao_copiar_link');
-
 botaoCopiar.addEventListener('click', () => {
 	const output_p = document.getElementById('output-link_encurtado-p').textContent;
 	if (!output_p) {
@@ -133,9 +132,6 @@ async function atualizarNavBar() {
     console.error("Erro ao atualizar navbar:", err);
   }
 }
-
-  
-
 
 
 document.addEventListener("DOMContentLoaded", atualizarNavBar);

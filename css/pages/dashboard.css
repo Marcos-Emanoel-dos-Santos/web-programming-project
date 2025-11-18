@@ -361,11 +361,14 @@ input[type="radio"] {
     width: 120px;
     color: var(--general_text_color);
     text-decoration: none;
-    transition: background-color 0.4s ease-in;
+    transition: background-color 0.4s ease-in,
+    transform 0.35s ease-in;
 }
 
 .create_new_link:hover{
     background-color: var(--hover_highlight_blue);
+    transform: translateY(-2px);
+    box-shadow: 0 0 12px var(--blue_shadow);
 }
 
 .link_summary_div{
