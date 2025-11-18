@@ -1,6 +1,6 @@
 :root{
     /* TEXT COLORS */
-    --general_text_color: #FFFFFF;
+    --general_text_color: #cdc9d6;
     --dark_text_color: #3D414A;
     --highlight_text_color: #b1a8c7;
     --secondary_text_color: #A6A6A6;
@@ -15,6 +15,7 @@
     /* BACKGROUND COLORS */
     --header_bg: #140D1C;
     --general_bg: #151122;
+    --user_CRUD_bg: #301e4e;
     --footer_bg: #000000;
     --link_bg: #DAD7E9;
     --login_bg: #c4c2cc;

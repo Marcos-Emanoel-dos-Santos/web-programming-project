@@ -22,7 +22,7 @@ function validateEmail(){
 	// regex for email validation (eu totalmente fiz isso de cabeça)
 	const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 	if (!emailRegex.test(email)) {
-		document.getElementById('emailError').textContent = 'Please enter a valid email address.';
+		document.getElementById('emailError').textContent = 'Favor inserir um endereço de e-mail válido.';
 		return false;
 	}
 	return true;

@@ -47,9 +47,33 @@
                 <p id="profile_links_count_p"></p>
             </div>
             <div class="account_CRUD">
-                <button class="account_edit_CRUD button_CRUD"><span></span>Edit account</button>
-                <button class="account_delete_CRUD button_CRUD"><span></span>Delete account</button>
+                <button class="account_edit_CRUD button_CRUD" onclick="editarUsuario()"><span></span>Edit account</button>
+                <button class="account_delete_CRUD button_CRUD" onclick="deletarUsuario()"><span></span>Delete account</button>
             </div>
+
+            <div class="shadow"></div>
+
+            <form id="edit_profile_form">
+                <span id="close_edit_form">&times;</span>
+                <div class="account_update_container">
+                    <h3>Edit profile</h3>
+                    <div class="account_edit">
+                        <label for="edit_nome">Name:</label>
+                        <input type="text" id="edit_nome" name="nome" class="account_edit_input">
+                    </div>
+                        
+                    <div class="account_edit">
+                        <label for="edit_email">Email:</label>
+                        <input type="email" id="edit_email" name="email" class="account_edit_input">
+                    </div>
+                    
+                    <button type="submit">Save changes</button>
+                </div>
+                    
+                <p id="mensagem_update"></p> 
+            </form>
+            
+            
         </div>
 
         <div class="link_related_div">
@@ -79,102 +103,9 @@
                 </div>
             </div>
 
+            <!-- SERÁ POPULADO COM O BANCO DE DADOS -->
+            <div id="links_container"></div>
 
-            <div class="link_summary_div link_related_subdiv">
-                <div class="element_URL_subdiv">
-                    <div class="element_URL_fitcontent_subdiv">
-                        <span></span>
-                        <p class="short_link_URL dashboard_link_URL">https://www.wknot.shrt1.com</p>
-                        <p class="long_link_URL dashboard_link_URL">https://www.very-long-external-link.com/njgbt49854hr4fvnb858gwh7hr89ef</p>
-                        <span></span>
-                    </div>
-                    <div class="element_tags_subdiv">
-                        <span>Tag 1</span>
-                        <span>Tag 3</span>
-                        <span>Tag 1</span>
-                        <span>Tag 3</span>
-                        <span>Tag 1</span>
-                        <span>Tag 3</span>
-                        <span>Tag 1</span>
-                        <span>Tag 3</span>
-                        <span>Tag 1</span>
-                        <span>Tag 3</span>
-                        <span>Tag 1</span>
-                        <span>Tag 3</span>
-                        <span>Tag 1</span>
-                        <span>Tag 3</span>
-                        
-                    </div>
-                </div>
-
-                <div class="element_CRUD_subdiv">
-                    <button class="button_CRUD button_delete_element"><span></span>Delete</button>
-                    <button class="button_CRUD button_edit_element"><span></span>Edit</button>
-                </div>
-            </div>
-
-            <div class="link_summary_div link_related_subdiv">
-                <div class="element_URL_subdiv">
-                    <div class="element_URL_fitcontent_subdiv">
-                        <span></span>
-                        <p class="short_link_URL dashboard_link_URL">https://www.wknot.shrt2.com</p>
-                        <p class="long_link_URL dashboard_link_URL">https://www.very-long-external-link.com/njgbt49854hr4fvnb858gwh7hr89ef</p>
-                        <span></span>
-                    </div>
-                    <div class="element_tags_subdiv">
-                        <span>Tag 1</span>
-                        <span>Tag 2</span>
-                        <span>Tag 3</span>
-                    </div>
-                </div>
-
-                <div class="element_CRUD_subdiv">
-                    <button class="button_CRUD button_delete_element"><span></span>Delete</button>
-                    <button class="button_CRUD button_edit_element"><span></span>Edit</button>
-                </div>
-
-            </div>
-
-
-            <div class="link_summary_div link_related_subdiv">
-                <div class="element_URL_subdiv">
-                    <div class="element_URL_fitcontent_subdiv">
-                        <span></span>
-                        <p class="short_link_URL dashboard_link_URL">https://www.wknot.shrt3.com</p>
-                        <p class="long_link_URL dashboard_link_URL">https://www.very-long-external-link.com/njgbt49854hr4fvnb858gwh7hr89ef</p>
-                        <span></span>
-                    </div>
-                    <div class="element_tags_subdiv">
-                        <span>Tag 3</span>
-                    </div>
-                </div>
-                
-                <div class="element_CRUD_subdiv">
-                    <button class="button_CRUD button_delete_element"><span></span>Delete</button>
-                    <button class="button_CRUD button_edit_element"><span></span>Edit</button>
-                </div>
-
-            </div>
-
-            <div class="link_summary_div link_related_subdiv">
-                <div class="element_URL_subdiv">
-                    <div class="element_URL_fitcontent_subdiv">
-                        <span></span>
-                        <p class="short_link_URL dashboard_link_URL">https://www.wknot.shrt4.com</p>
-                        <p class="long_link_URL dashboard_link_URL">https://www.very-long-external-link.com/njgbt49854hr4fvnb858gwh7hr89ef</p>
-                        <span></span>
-                    </div>
-                    <div class="element_tags_subdiv">
-                        <span>Tag 3</span>
-                    </div>
-                </div>
-                
-                <div class="element_CRUD_subdiv">
-                    <button class="button_CRUD button_delete_element"><span></span>Delete</button>
-                    <button class="button_CRUD button_edit_element"><span></span>Edit</button>
-                </div>
-
-            </div>
 
         </div>
     </main>

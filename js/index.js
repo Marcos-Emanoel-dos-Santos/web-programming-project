@@ -22,13 +22,12 @@ async function gerarLink() {
 
 	try {
 		// Chama a API para criar o link
-		const response = await fetch('api/links.php', {
+		const response = await fetch('database/api/links.php', {
 			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json'
-			},
+			headers: { "Content-Type": "application/json" },
+			credentials: "include",
 			body: JSON.stringify({
-				url: input_link
+				url_original: input_link
 			})
 		});
 
@@ -67,9 +66,76 @@ botaoCopiar.addEventListener('click', () => {
 	}
 
 	navigator.clipboard.writeText(output_p);
-	
-	// Feedback visual (opcional)
-	const originalSrc = botaoCopiar.src;
-	// Você pode adicionar um feedback aqui se quiser
-	console.log('Link copiado!');
 });
+
+
+async function atualizarNavBar() {
+  try {
+    const response = await fetch("database/api/checkSession.php", {
+      credentials: "include",
+    });
+
+    const data = await response.json();
+    const nav = document.querySelector("nav");
+    if (!nav) return;
+
+    // Remove o botão anterior (sign in / sign out)
+    const antigo = nav.querySelector(".nav_bar_elemento.sign");
+    if (antigo) antigo.remove();
+
+    // Cria o anchor de sign in/sign out com base na necessidade
+    const div = document.createElement("div");
+    div.classList.add("nav_bar_elemento", "sign");
+    const signAnchor = document.createElement("a");
+    signAnchor.href = "signin.html";
+    signAnchor.textContent = data.loggedIn ? "Sign out" : "Sign in";
+    div.appendChild(signAnchor);
+
+    const span = document.createElement("span");
+    span.classList.add("nav_bar_animacao");
+    div.appendChild(span);
+
+    // Insere na barra
+    nav.insertBefore(div, nav.children[0]);
+
+    // Define comportamento
+    if (data.loggedIn) {
+      signAnchor.addEventListener("click", async (e) => {
+        e.preventDefault();
+        await fetch("database/api/logout.php", {
+          method: "POST",
+          credentials: "include",
+        });
+        window.location.href = "signin.html";
+      });
+    } else {
+      signAnchor.href = "signin.html";
+    }
+
+	// Cria o anchor de dashboard
+	if(data.loggedIn){
+		const divDashboard = document.createElement("div");
+		divDashboard.classList.add("nav_bar_elemento", "sign");
+		const dashboardAnchor = document.createElement("a");
+		dashboardAnchor.href = "dashboard.html";
+		dashboardAnchor.textContent = "dashboard";
+		divDashboard.appendChild(dashboardAnchor);
+
+		const span = document.createElement("span");
+		span.classList.add("nav_bar_animacao");
+		divDashboard.appendChild(span);
+
+		// Insere na barra
+    	nav.insertBefore(divDashboard, nav.children[0]);
+	}
+
+  } catch (err) {
+    console.error("Erro ao atualizar navbar:", err);
+  }
+}
+
+  
+
+
+
+document.addEventListener("DOMContentLoaded", atualizarNavBar);

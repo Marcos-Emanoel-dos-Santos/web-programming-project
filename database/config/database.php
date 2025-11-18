@@ -2,9 +2,9 @@
 
 class Database {
     private $host = "localhost";
-    private $db_name = "webknot"; 
+    private $db_name = "celulas"; 
     private $username = "root";
-    private $password = ""; 
+    private $password = "Uc1661"; 
     private $conn;
 
     /**
