@@ -51,14 +51,12 @@ main{
     color: #fff;
     border: none;
     border-radius: 10px;
-    transition:
-    scale 0.35s ease-in,
-    background-color 0.35s ease-in;
+    transition: 0.35s ease-in;
 }
 
 #botao_gerador_link:hover{
-    background-color: #2154c4;
-    scale: 1.05;
+    background-color: var(--hover_highlight_blue);
+    box-shadow: 0 0 12px var(--blue_shadow);
 }
 
 #output-link_encurtado{

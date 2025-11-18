@@ -3,7 +3,7 @@ class Conexao {
     private $host = "localhost";
     private $usuario = "root";
     private $senha = "Uc1661";
-    private $banco = "celulas"; 
+    private $banco = "webknot"; 
 
     public function getConexao() {
         $conn = new mysqli($this->host, $this->usuario, $this->senha, $this->banco);

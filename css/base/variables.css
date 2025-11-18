@@ -23,11 +23,18 @@
 
     /* BUTTON COLORS */
     --delete_button_anim_bg: #ec091c;
-    --edit_button_anim_bg: #19ee60;
+    --edit_button_anim_bg: #10b981;
 
 
-    /* BORDER SPECIFICATIONS */
+    /* BORDER */
     --general_border_radius: 10.5px;
+    --CRUD_input_border: #4a3c67;
+
+    /* SHADOW */
+    --blue_shadow: rgba(24, 163, 255, 0.4);
+    --red_shadow: rgba(255, 17, 37, 0.4);
+    --green_shadow: rgba(28, 228, 161, 0.4);
+    --URL_span_glow: rgba(177, 168, 199, 0.7);
 
     --track-bg: #21193a;
     --link_URL_width: 300px;

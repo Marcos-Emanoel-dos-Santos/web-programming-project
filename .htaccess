@@ -1,0 +1,8 @@
+RewriteEngine On
+
+# Se a URL não for um arquivo nem pasta
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Envia tudo para redirect.php
+RewriteRule ^(.+)$ redirect.php?c=$1 [L,QSA]
