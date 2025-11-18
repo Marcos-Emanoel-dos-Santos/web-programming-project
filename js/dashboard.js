@@ -208,22 +208,25 @@ async function deletarLink(id_link) {
 
 
 async function deletarUsuario() {
-  try {
-    const response = await fetch("database/api/deleteUser.php", {
-      method: "DELETE",
-      credentials: "include"
-    });
+  if(confirm("Tem certeza que deseja excluir esta conta?")){
+    try {
+      const response = await fetch("database/api/deleteUser.php", {
+        method: "DELETE",
+        credentials: "include"
+      });
 
-    const data = await response.json();
-    alert(data.message);
+      const data = await response.json();
+      alert(data.message);
 
-    if (data.success) {
-      window.location.href = "signin.html";
+      if (data.success) {
+        window.location.href = "signin.html";
+      }
+    } catch (err) {
+      console.error("Erro ao deletar usuário:", err);
+      alert("Erro ao tentar deletar conta.");
     }
-  } catch (err) {
-    console.error("Erro ao deletar usuário:", err);
-    alert("Erro ao tentar deletar conta.");
   }
+  
 }
 
 

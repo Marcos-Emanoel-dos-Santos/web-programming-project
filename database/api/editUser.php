@@ -60,7 +60,7 @@ try {
     if ($usuario->atualizar()) {
         $_SESSION['nome'] = $usuario->nome;
 
-        echo json_encode(['success' => true, 'message' => 'Usuário atualizado com sucesso']);
+        echo json_encode(['success' => true, 'message' => 'Alterações salvas com sucesso']);
     } else {
         http_response_code(400);
         echo json_encode(['success' => false, 'message' => 'Erro ao atualizar usuário.']);
