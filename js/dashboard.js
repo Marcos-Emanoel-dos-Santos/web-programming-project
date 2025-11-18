@@ -135,6 +135,20 @@ async function renderizarLinks() {
 }
 
 
+document.addEventListener('click', (e) => {
+  const div = e.target.closest('.element_URL_fitcontent_subdiv');
+  if (!div) return;
+
+  const shortEl = div.querySelector('.short_link_URL');
+  const shortLink = shortEl ? shortEl.textContent.trim() : '';
+
+  if (!shortLink) {
+    console.warn('Elemento .short_link_URL não encontrado ou vazio dentro da subdiv.');
+    return;
+  }
+
+  navigator.clipboard.writeText(shortLink)
+});
 
 
 // ========== CRIAR LINK ==========
