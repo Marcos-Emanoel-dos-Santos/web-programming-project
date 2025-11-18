@@ -1,3 +1,4 @@
+// ========== APAGA TODOS OS COOKIES E LEVA O USUÁRIO PARA TELA DE LOGIN ==========
 fetch('database/api/logout.php', {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' }

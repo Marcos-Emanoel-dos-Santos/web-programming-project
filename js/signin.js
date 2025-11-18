@@ -1,21 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
-	const form = document.getElementById('signinForm');
-
-	form.addEventListener('submit', function(event) {
-		event.preventDefault();
-
-		const isFormValid = validateForm();
-
-		if (isFormValid) {
-			console.log('Form valid, sending data.');
-			login();
-		} else {
-			console.log('Form invalid, please check the fields.');
-		}
-	});
-});
-
-
+// ========== FUNÇÕES DE VALIDAÇÃO ==========
 function validateEmail(){
 	const email = document.getElementById('email').value.trim();
 
@@ -47,6 +30,8 @@ function validateForm() {
 	return isValidEmail && isValidPsswd;
 }
 
+
+// ========== LOGIN EM SI ==========
 function login() {
   const email = document.getElementById('email').value.trim();
   const password = document.getElementById('password').value.trim();
@@ -68,3 +53,21 @@ function login() {
   .catch(err => console.error('Erro ao fazer login:', err));
 }
 
+
+// ========== AO CARREGAR A PÁGINA ==========
+document.addEventListener('DOMContentLoaded', () => {
+	const form = document.getElementById('signinForm');
+
+	form.addEventListener('submit', function(event) {
+		event.preventDefault();
+
+		const isFormValid = validateForm();
+
+		if (isFormValid) {
+			console.log('Form valid, sending data.');
+			login();
+		} else {
+			console.log('Form invalid, please check the fields.');
+		}
+	});
+});

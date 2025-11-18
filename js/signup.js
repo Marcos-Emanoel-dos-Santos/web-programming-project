@@ -1,21 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
-	const form = document.getElementById('signupForm');
-
-	form.addEventListener('submit', function(event) {
-		event.preventDefault();
-
-		const isFormValid = validateForm();
-
-		if (isFormValid) {
-			console.log('Form valid, sending data.');
-			salvarUsuario();
-		} else {
-			console.log('Form invalid, please check the fields.');
-		}
-	});
-});
-
-
+// ========== FUNÇÕES DE VALIDAÇÃO ==========
 function validateFullName(){
 	const fullName = document.getElementById('fullName').value.trim();
 	if (fullName.length < 2) {
@@ -24,7 +7,6 @@ function validateFullName(){
 	}
 	return true;
 }
-
 
 function validateEmail(){
 	const email = document.getElementById('email').value.trim();
@@ -37,7 +19,6 @@ function validateEmail(){
 	}
 	return true;
 }
-
 
 function validatePsswd(){
 	const password = document.getElementById('password').value.trim();
@@ -54,7 +35,6 @@ function validatePsswd(){
 	return true;
 }
 
-
 function validateForm() {
 	document.querySelectorAll('.error').forEach(e => e.textContent = '');
 	const isValidName = validateFullName();
@@ -65,6 +45,7 @@ function validateForm() {
 }
 
 
+// ========== SALVA O USUÁRIO NO BANCO DE DADOS ==========
 async function salvarUsuario(){
 	const fullName = document.getElementById('fullName').value.trim();
 	const email = document.getElementById('email').value.trim();
@@ -94,3 +75,22 @@ async function salvarUsuario(){
 		alert(resultado.message);
 	}
 }
+
+
+// ========== AO CARREGAR A PÁGINA ==========
+document.addEventListener('DOMContentLoaded', () => {
+	const form = document.getElementById('signupForm');
+
+	form.addEventListener('submit', function(event) {
+		event.preventDefault();
+
+		const isFormValid = validateForm();
+
+		if (isFormValid) {
+			console.log('Form valid, sending data.');
+			salvarUsuario();
+		} else {
+			console.log('Form invalid, please check the fields.');
+		}
+	});
+});
