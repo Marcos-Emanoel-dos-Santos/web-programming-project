@@ -1,6 +1,10 @@
 -- ------------------------------------------------------------------------
 -- CONSTRUINDO DATABASE
 -- ------------------------------------------------------------------------
+DROP TABLE Link_Tag;
+DROP TABLE Link;
+DROP TABLE Tag;
+DROP TABLE Usuario;
 
 -- Criação da tabela de Usuários
 CREATE TABLE Usuario (
@@ -17,7 +21,7 @@ CREATE TABLE Link (
     id_link INT AUTO_INCREMENT PRIMARY KEY,
     id_usuario INT NULL,
     url_original TEXT NOT NULL,
-    url_curta VARCHAR(30) NOT NULL UNIQUE,
+    url_curta VARCHAR(24) NOT NULL UNIQUE,
     total_cliques INT NOT NULL DEFAULT 0,
     data_criacao DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     data_expiracao DATETIME NULL,
