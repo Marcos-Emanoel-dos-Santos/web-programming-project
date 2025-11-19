@@ -604,8 +604,16 @@ main{
     gap: 10px;
     padding-bottom: 30px;
 }
-
 }
+
+
+@media screen and (max-width:600px){
+#edit_profile_form {
+    width: 90%;
+    max-width: 80vw;
+}
+}
+
 
 @media screen and (max-width:400px){
 .short_link_URL{

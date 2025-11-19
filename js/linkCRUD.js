@@ -160,9 +160,7 @@ async function deletarLink(id_link) {
     const data = await response.json();
     console.log(data);
 
-    if (data.success) {
-      console.log("Link deletado com sucesso.");
-    } else {
+    if (!data.success) {
       alert("Erro ao deletar link: " + data.message);
     }
   } catch (error) {
